@@ -5,39 +5,51 @@
     <br>
     <h1 style="text-align: center;"><span style="color: #ffffff;">Iniciar Sesion</span></h1>
 
-    <img style="display: block; margin-left: auto; margin-right: auto;" width="150" height="130" src="https://images.vexels.com/media/users/3/136558/isolated/preview/43cc80b4c098e43a988c535eaba42c53-icono-de-usuario-de-la-persona-by-vexels.png">
+ 
+    
+    <div class="visorbanner">
+    <div id="content">
 
-    <br>
-    <br>
+      
 
+        <div id="left">
+            <h1 style="color: #ffffff;display: block; margin-left: 72px; margin-right: auto;">Ingrese con su Foto</h1>
+            <div id="miCameraOnline">
+                <video #video id="video" width="300" height="240" autoplay class="center"></video>
+                <h2 style="text-align: center;"><span style="color: #ffffff;">Nombre de Usuario</span></h2>
+                <input style="display: block; margin-left: 112px; margin-right: auto;" type="name">
+                <!-- Password -->
+                <h2 style="display: block; margin-left: 115px; margin-right: auto;"><span style="color: #ffffff;">Capturar rostro</span></h2>
+    
+                <button (click)="capturar()" style="display: block; margin-left: 180px; margin-right: auto;" pButton
+                    type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
+                
+            </div>
+        </div>
+    
+        <div id="right1">
+            <div>
+                <br>
+                <br>
+                <blockquote>
+                    <h1 style="color: #ffffff;text-align: center;">Aqui visualizara su foto xd uWu<img src="https://html-online.com/editor/tinymce4_6_5/plugins/emoticons/img/smiley-cool.gif" alt="cool" /></h1>
+                    </blockquote>
+                <canvas #canvas id="canvas" width="640" height="480" class="center"></canvas>
+            </div>
+           
+        </div>
 
-    <div id="container">
-        <form>
-            <!-- Username -->
-            <h2 style="text-align: center;"><span style="color: #ffffff;">Nombre de Usuario</span></h2>
-            <input style="display: block; margin-left: auto; margin-right: auto;" type="name">
-            <!-- Password -->
-            <h2 style="text-align: center;"><span style="color: #ffffff;">Capturar rostro</span></h2>
+     
+       
 
-            <button style="display: block; margin-left: auto; margin-right: auto;" pButton type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </form>
     </div>
+</div>
+    
+<br>
+<br>
+<br>
+   
 </body>
+
+
+
