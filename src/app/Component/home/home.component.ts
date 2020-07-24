@@ -12,10 +12,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  verIniciarSecion(tipo: string){
-    this.router.navigate([tipo,'buscar']);
- }
+  
 iniciarsesioc(){
   this.router.navigate(['Iniciar-sesion']);
 }
