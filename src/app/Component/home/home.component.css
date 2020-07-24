@@ -1,8 +1,8 @@
 body {
     background-image: url(../../../assets/Imagenes/aesthetic-pink-and-green-wallpaper-ios.jpg);
-    width: 100%;
-    text-align: center;
-    background-repeat: no-repeat;
-    background-position: center top;
-    height: 100%;
+    background-size: 1100px 1950px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

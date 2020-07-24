@@ -6,4 +6,7 @@ body {
     background-size: contain;
     background-position: center top;
     height: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 800px 800px;
 }
