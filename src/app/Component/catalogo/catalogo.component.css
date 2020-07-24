@@ -1,0 +1,8 @@
+body {
+    background-image: url(https://i.pinimg.com/originals/32/4f/30/324f30557d8cef876d129411a7471400.jpg);
+    background-size: 1100px 1950px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
