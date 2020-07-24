@@ -20,7 +20,11 @@ const routes: Routes = [
     path: 'registrar-Usuario',
     component: RegistrarComponent
   },
-  
+{
+  path: 'registrar',
+  component: RegistrarComponent
+},
+ 
 ];
 
 @NgModule({
