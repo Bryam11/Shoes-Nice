@@ -5,6 +5,7 @@ import { HomeComponent } from './Component/home/home.component';
 
 const routes: Routes = [
   {
+    
     path: 'buscar',
     component: HomeComponent
   },
