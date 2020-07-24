@@ -7,6 +7,8 @@ import { HomeComponent } from './Component/home/home.component';
 
 import { IniciarSesionComponent } from './Component/iniciar-sesion/iniciar-sesion.component';
 import { ButtonModule } from 'primeng/button';
+import { RegistrarComponent } from './Component/registrar/registrar.component';
+import { CatalogoComponent } from './Component/catalogo/catalogo.component';
 
 
 
@@ -14,7 +16,9 @@ import { ButtonModule } from 'primeng/button';
   declarations: [
     AppComponent,
     HomeComponent,
-    IniciarSesionComponent
+    IniciarSesionComponent,
+    RegistrarComponent,
+    CatalogoComponent
   ],
   imports: [
     BrowserModule,

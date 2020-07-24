@@ -1,6 +1,6 @@
 body {
     background-image: url(https://image.jimcdn.com/app/cms/image/transf/none/path/s99f39f2610b1dca2/backgroundarea/ie8f0d218e47a5121/version/1551585086/image.jpg);
-    background-size: 1100px 1950px;
+    background-size: 1100px 1830px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -27,7 +27,7 @@ body {
 
 #right {
     width:20%;
-    margin: 30px;
+    margin:5px;
     padding: 2em;
     background: rgba(18, 1, 65, 0.986)y;
 }
@@ -98,7 +98,7 @@ a.btnAzul {
     top: 0px;
     left: 400px;
     width: 500px;
-    height: 540px;
+    height: 400px;
     }
    .slide
    {
