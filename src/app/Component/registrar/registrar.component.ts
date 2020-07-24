@@ -50,4 +50,8 @@ export class RegistrarComponent implements OnInit {
     }
     
   }
+
+  public guardar(){
+    
+  }
 }

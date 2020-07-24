@@ -49,4 +49,7 @@ export class IniciarSesionComponent implements OnInit {
     }
     
   }
+  public comparar(){
+    
+  }
 }
