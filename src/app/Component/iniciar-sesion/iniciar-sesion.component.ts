@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -16,13 +17,19 @@ export class IniciarSesionComponent implements OnInit {
   maxConfidence: any;
   nombreEmocion: any;
   cargando = null;
-  bucket        = 'bucket' // the bucketname without s3://
+  //bucket        = 'bucket' // the bucketname without s3://
   foto_origen  = 'source.jpg'
   client:any;
   response : any
+  nombre:string;
   
 
-  constructor() { }
+  constructor(private router: Router) { 
+    AWS.config.region = 'us-east-1'; // Región
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: 'us-east-1:3084bad0-56af-41ce-b304-25579aed16ec',
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -49,7 +56,49 @@ export class IniciarSesionComponent implements OnInit {
     }
     
   }
+
+ 
+
+
   public comparar(){
+    var params = {
+      TargetImage: {
+        S3Object: {
+          Bucket: "elasticbeanstalk-us-east-1-737415690629",
+          Name: this.nombre
+      }
+    },
+    SourceImage: {
     
+      Bytes: new Buffer(this.foto, 'base64')
+          },
+    SimilarityThreshold: 0
+  };
+  this.detector = new AWS.Rekognition();
+  
+  this.detector.compareFaces(params, function (error, response) {
+    
+    if (error) {
+      console.log(error);
+      console.log(params);
+    } else {
+      console.log(params);
+      response.FaceMatches.forEach(data => {
+        console.log(data);
+        
+        let position = data.Face.BoundingBox
+        let similarity = data.Similarity
+        let conficencial = data.Confidence
+        alert(`El paresido entre las dos fotos es de ${similarity}%`)
+        if(similarity > 99){
+          alert(`Puede iniciar sesion`)
+          
+        }else{
+          alert(`No Puede iniciar sesion`)
+        }
+
+      });
+    }
+  });
   }
 }
