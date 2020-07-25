@@ -10,6 +10,9 @@ import { IniciarSesionComponent } from './Component/iniciar-sesion/iniciar-sesio
 import { ButtonModule } from 'primeng/button';
 import { RegistrarComponent } from './Component/registrar/registrar.component';
 import { CatalogoComponent } from './Component/catalogo/catalogo.component';
+import {  UserService } from './Service/Usuario.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ShoesService } from './Service/Shoes.service';
 
 
 
@@ -25,9 +28,10 @@ import { CatalogoComponent } from './Component/catalogo/catalogo.component';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService, ShoesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
