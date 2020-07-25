@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
-import { runInThisContext } from 'vm';
+
 
 @Component({
   selector: 'app-registrar',

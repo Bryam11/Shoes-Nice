@@ -10,7 +10,9 @@ import { IniciarSesionComponent } from './Component/iniciar-sesion/iniciar-sesio
 import { ButtonModule } from 'primeng/button';
 import { RegistrarComponent } from './Component/registrar/registrar.component';
 import { CatalogoComponent } from './Component/catalogo/catalogo.component';
-import { FormsModule } from '@angular/forms';
+import {  UserService } from './Service/Usuario.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -25,9 +27,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
