@@ -50,12 +50,12 @@ guardarProveedor(usuario: UsuarioInterface): Observable <UsuarioInterface>{
 }
 
 getQuery(query: string){
-    const url = `https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/${query}`;
+    const url = `  https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/${query}`;
     console.log(url);
     return this.http.get(url);
   }
   getUsuarios(): Observable<any> {
-    const url='getUsuarios';
+    const url='getusers/usuarios';
     return this.getQuery(url);
   }
 

@@ -12,6 +12,7 @@ import { RegistrarComponent } from './Component/registrar/registrar.component';
 import { CatalogoComponent } from './Component/catalogo/catalogo.component';
 import {  UserService } from './Service/Usuario.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ShoesService } from './Service/Shoes.service';
 
 
 
@@ -30,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, ShoesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
