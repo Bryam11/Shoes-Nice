@@ -10,7 +10,7 @@ import { IniciarSesionComponent } from './Component/iniciar-sesion/iniciar-sesio
 import { ButtonModule } from 'primeng/button';
 import { RegistrarComponent } from './Component/registrar/registrar.component';
 import { CatalogoComponent } from './Component/catalogo/catalogo.component';
-import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
