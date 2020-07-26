@@ -79,8 +79,8 @@ export class RegistrarComponent implements OnInit {
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketName,
-            Key: this.image,
-            Body: this.nombre,
+            Key: this.nombre,
+            Body: this.image,
             ACL: 'public-read',
           },
         }).promise();
