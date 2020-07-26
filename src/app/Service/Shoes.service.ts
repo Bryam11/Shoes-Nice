@@ -46,7 +46,7 @@ export class ShoesService {
 
  
 guardarProveedor(shoes: ShoesInterface): Observable < ShoesInterface>{
-  return this.http.post< ShoesInterface>('https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/postUser', shoes);
+  return this.http.post< ShoesInterface>('https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/ingresoUsuarios', shoes);
 }
 
 getQuery(query: string){
@@ -55,7 +55,7 @@ getQuery(query: string){
     return this.http.get(url);
   }
   getShoes(): Observable<any> {
-    const url='getShoes';
+    const url='getUsuarios/';
     return this.getQuery(url);
   }
 

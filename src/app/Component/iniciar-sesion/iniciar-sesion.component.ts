@@ -24,7 +24,7 @@ export class IniciarSesionComponent implements OnInit {
   nombre: string;
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router ) {
     AWS.config.region = 'us-east-1'; // Región
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
@@ -57,7 +57,9 @@ export class IniciarSesionComponent implements OnInit {
 
   }
 
-
+   cambiardeventana(){
+   this.router.navigate(['ver-catalogo']);
+   }
 
 
   public comparar() {
@@ -65,7 +67,7 @@ export class IniciarSesionComponent implements OnInit {
       TargetImage: {
         S3Object: {
           Bucket: "imagenes-usuarios",
-          Name: new Buffer(this.nombre, 'base64')
+          Name: this.nombre
             }
 
       },
@@ -92,9 +94,9 @@ export class IniciarSesionComponent implements OnInit {
           let similarity = data.Similarity
           let conficencial = data.Confidence
           alert(`El paresido entre las dos fotos es de ${similarity}%`)
-          if (similarity > 99) {
-            alert(`Puede iniciar sesion`)
-
+          if (similarity > 95) {
+            alert(`Puede iniciar sesion  ${this.cambiardeventana()}`)
+           
           } else {
             alert(`No Puede iniciar sesion`)
           }
