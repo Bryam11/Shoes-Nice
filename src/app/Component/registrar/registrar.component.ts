@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
+import { UsuarioInterface } from 'src/app/Model/Usuario';
+import { UserService } from '../../Service/Usuario.service';
 
 
 @Component({
@@ -34,9 +36,11 @@ export class RegistrarComponent implements OnInit {
     apiVersion: '2006-03-01',
     params: { Bucket: 'imagenes-usuarios' },
   });
+ public usuarios: UsuarioInterface={foto:"",nombre: "",userid: 0}
 
 
-  constructor() { }
+
+  constructor(private servicioUsuarios: UserService) { }
 
   ngOnInit(): void {
 
@@ -66,7 +70,7 @@ export class RegistrarComponent implements OnInit {
       },
 
     }
-
+   
   }
 
   onClickSubir = async (event) => {
@@ -79,16 +83,16 @@ export class RegistrarComponent implements OnInit {
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketName,
-            Key: this.nombre,
+            Key: this.usuarios.nombre,
             Body: this.foto,
             ACL: 'public-read',
           },
         }).promise();
         alert('se ha guardado la imagen correctamente');
-
+  
         this.urlImagen = data.Location;
         this.subiendo = false;
-        this.showImagen = true;
+        this.showImagen  = true;
       } catch (error) {
         this.error = true;
         const bucle = setInterval(() => {
@@ -99,6 +103,14 @@ export class RegistrarComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
+   
+    this.guardarUsuario();
 
   }
+
+  guardarUsuario(){
+  this.servicioUsuarios.guardarUsuario(this.usuarios).subscribe(data =>{console.log(data)});  
+  alert('Se a registrado correctamente'); 
+}
+  
 }

@@ -20,7 +20,7 @@ export class UserService {
 
   
   // tslint:disable-next-line: max-line-length
-  registerUsuario(foto: number,nombre: string,userid: number) {
+  registerUsuario(foto: string,nombre: string,userid: number) {
     const url_api = 'https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/postUser';
     return this.http
       .post<UsuarioInterface>(
@@ -45,17 +45,17 @@ export class UserService {
   }
 
  
-guardarProveedor(usuario: UsuarioInterface): Observable <UsuarioInterface>{
-  return this.http.post<UsuarioInterface>('https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/postUser', usuario);
+guardarUsuario(usuario: UsuarioInterface): Observable <UsuarioInterface>{
+  return this.http.post<UsuarioInterface>('https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/IngresodeUsuarios/usuarios', usuario);
 }
 
 getQuery(query: string){
-    const url = `  https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/${query}`;
+    const url = `https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/${query}`;
     console.log(url);
     return this.http.get(url);
   }
   getUsuarios(): Observable<any> {
-    const url='getusers/usuarios';
+    const url='getU/usuarios';
     return this.getQuery(url);
   }
 

@@ -2,7 +2,7 @@ import { Identifiers } from '@angular/compiler';
 
 export interface UsuarioInterface {
 
-        foto: number,
+        foto: string,
         nombre: string,
         userid: number
       }
