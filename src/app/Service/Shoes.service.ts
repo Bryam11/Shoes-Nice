@@ -55,7 +55,7 @@ getQuery(query: string){
     return this.http.get(url);
   }
   getShoes(): Observable<any> {
-    const url='getUsuarios/';
+    const url='getshoes/';
     return this.getQuery(url);
   }
 

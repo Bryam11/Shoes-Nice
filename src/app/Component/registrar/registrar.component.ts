@@ -29,6 +29,7 @@ export class RegistrarComponent implements OnInit {
   error = false;
   subiendo = false;
   urlImagen = null;
+  imageRegistro: any;
 
   albumBucketName = 'imagenes-usuarios';
 
@@ -64,7 +65,7 @@ export class RegistrarComponent implements OnInit {
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 600, 440);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
     this.foto = this.foto.split(",")[1];
-    this.image = {
+   this.image = {
       Image: {
         Bytes: new Buffer(this.foto, 'base64')
       },
@@ -75,7 +76,7 @@ export class RegistrarComponent implements OnInit {
 
   onClickSubir = async (event) => {
 
- 
+    this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
       try {
         console.log(this.foto);
@@ -83,14 +84,14 @@ export class RegistrarComponent implements OnInit {
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketName,
-            Key: this.usuarios.nombre,
-            Body: this.foto,
+            Key: this.usuarios.nombre + '.png',
+            Body: this.imageRegistro,
             ACL: 'public-read',
           },
         }).promise();
         alert('se ha guardado la imagen correctamente');
   
-        this.urlImagen = data.Location;
+        this.usuarios.foto = data.Location;
         this.subiendo = false;
         this.showImagen  = true;
       } catch (error) {

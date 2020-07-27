@@ -46,7 +46,7 @@ export class UserService {
 
  
 guardarUsuario(usuario: UsuarioInterface): Observable <UsuarioInterface>{
-  return this.http.post<UsuarioInterface>('https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/IngresodeUsuarios/usuarios', usuario);
+  return this.http.post<UsuarioInterface>('https://82ha02k1q3.execute-api.us-east-1.amazonaws.com/IngresoUsuarios/usuarios', usuario);
 }
 
 getQuery(query: string){
@@ -55,7 +55,7 @@ getQuery(query: string){
     return this.http.get(url);
   }
   getUsuarios(): Observable<any> {
-    const url='getU/usuarios';
+    const url='getUsuarios/usuarios';
     return this.getQuery(url);
   }
 

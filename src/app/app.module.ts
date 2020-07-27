@@ -14,6 +14,7 @@ import { UserService } from './Service/Usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ShoesService } from './Service/Shoes.service';
 import { MegaMenuModule } from 'primeng/megamenu';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
     ButtonModule,
     FormsModule,
     HttpClientModule,
-    MegaMenuModule
+    MegaMenuModule,
+    ScrollPanelModule
   ],
   providers: [UserService, ShoesService],
   bootstrap: [AppComponent]
