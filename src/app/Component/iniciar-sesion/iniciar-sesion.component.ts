@@ -95,10 +95,9 @@ export class IniciarSesionComponent implements OnInit {
           let conficencial = data.Confidence
           alert(`El paresido entre las dos fotos es de ${similarity}%`)
           if (similarity > 95) {
-            alert(`Puede iniciar sesion  ${this.cambiardeventana()}`)
-           
+            alert(`Puede iniciar sesion`);
           } else {
-            alert(`No Puede iniciar sesion`)
+            alert(`No Puede iniciar sesion`);
           }
 
         });
