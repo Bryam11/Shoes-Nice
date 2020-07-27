@@ -27,7 +27,7 @@ export class IniciarSesionComponent implements OnInit {
   constructor(private router: Router) { 
     AWS.config.region = 'us-east-1'; // Región
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: 'us-east-1:3084bad0-56af-41ce-b304-25579aed16ec',
+      IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
     });
   }
 
@@ -64,7 +64,7 @@ export class IniciarSesionComponent implements OnInit {
     var params = {
       TargetImage: {
         S3Object: {
-          Bucket: "elasticbeanstalk-us-east-1-737415690629",
+          Bucket: "imagenes-usuarios",
           Name: this.nombre
       }
     },
