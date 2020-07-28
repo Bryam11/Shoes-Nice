@@ -1,0 +1,39 @@
+body {
+    background-image: url(../../../assets/Imagenes/fondoshoes.jpg);
+    background-size: 1100px 1950px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#content {
+    overflow: auto;
+    width: 150%;
+    background: rgba(18, 1, 65, 0.986)y;
+    align-content: center;
+}
+
+#content {
+    overflow: auto;
+    width: 100%;
+    background: rgba(18, 1, 65, 0.986)y;
+    align-content: center;
+}
+
+.visorbanner {
+    overflow: hidden;
+    position: relative;
+    /*tambien puede ser absolute si se quiere*/
+    top: 0px;
+    left: 780px;
+    width: 400px;
+    height: 480px;
+    background-color: rgb(204, 229, 245);
+}
+
+.slide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

@@ -20,7 +20,10 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import { UsuarioControllerService } from './Rest/api/usuarioController.service';
 import { ShoesControllerService } from './Rest/api/shoesController.service';
-
+import { RegisterShoesComponent } from './Component/register-shoes/register-shoes.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { ShoesControllerService } from './Rest/api/shoesController.service';
     HomeComponent,
     IniciarSesionComponent,
     RegistrarComponent,
-    CatalogoComponent
+    CatalogoComponent,
+    RegisterShoesComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,10 @@ import { ShoesControllerService } from './Rest/api/shoesController.service';
     ScrollPanelModule,
     ListboxModule,
     TableModule,
-    CarouselModule
+    CarouselModule,
+    DropdownModule,
+    BrowserAnimationsModule,
+    FileUploadModule
   ],
   providers: [UsuarioControllerService,ShoesControllerService],
   bootstrap: [AppComponent]
