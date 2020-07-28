@@ -12,6 +12,9 @@ import { RegistrarComponent } from './Component/registrar/registrar.component';
 import { CatalogoComponent } from './Component/catalogo/catalogo.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ListboxModule } from 'primeng/listbox';
+import { TableModule } from 'primeng/table';
+import { CarouselModule } from 'primeng/carousel';
 
 import { MegaMenuModule } from 'primeng/megamenu';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
@@ -34,7 +37,10 @@ import { ShoesControllerService } from './Rest/api/shoesController.service';
     FormsModule,
     HttpClientModule,
     MegaMenuModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    ListboxModule,
+    TableModule,
+    CarouselModule
   ],
   providers: [UsuarioControllerService,ShoesControllerService],
   bootstrap: [AppComponent]

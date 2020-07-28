@@ -1,29 +1,59 @@
-.custombar1 .ui-scrollpanel-wrapper {
-    border-right: 9px solid #f4f4f4;
+.visorbanner{
+    overflow:hidden; 
+    position: relative;/*tambien puede ser absolute si se quiere*/
+    top: 0px;
+    left: 0px;
+    width: 1300px;
+    height: 580px;
+    }
+   .slide
+   {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   }
+   #content {
+    overflow: auto;
+    width: 150%;
+    background:rgba(18, 1, 65, 0.986)y;
 }
 
-.custombar1 .ui-scrollpanel-bar {
-    background-color: #1976d2;
-    opacity: 1;
-    transition: background-color .3s;
+#content {
+    overflow: auto;
+    width: 100%;
+    background:rgba(18, 1, 65, 0.986)y;
+}
+#left {
+    float: left;
 }
 
-.custombar1 .ui-scrollpanel-bar:hover {
-    background-color: #135ba1;
+#right {
+    float: right;
+}
+#left{
+    width:65%;
+    margin:60px;
+    padding: -5em;
+    background: rgba(18, 1, 65, 0.986)y; 
 }
 
-.custombar2 .ui-scrollpanel-wrapper {
-    border-right: 9px solid #757575;
-    border-bottom: 9px solid #757575;
+#left1{
+    width:50%;
+    margin:-10px;
+    padding: em;
+    background: rgba(18, 1, 65, 0.986)y; 
 }
 
-.custombar2 .ui-scrollpanel-bar {
-    background-color: #68C77D;
-    border-radius: 0;
-    opacity: 1;
-    transition: background-color .3s;
+#right1 {
+    width:50%;
+    margin:10px;
+    padding: -5em;
+    background: rgba(18, 1, 65, 0.986)y;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
 }
 
-.custombar2:hover .ui-scrollpanel-bar {
-    background-color: #46A55A;
-}
+
