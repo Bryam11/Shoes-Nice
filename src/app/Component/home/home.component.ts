@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShoesControllerService } from '../../Rest/api/shoesController.service';
+import { Shoes } from 'src/app/Rest';
 
 
 
@@ -11,8 +13,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   UsuarioInterface: any;
   ShoesInterface: any;
+  Shoes = new Array<Shoes>();
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router,private ShoesServicio: ShoesControllerService) { }
 
   ngOnInit(): void {
   this.getUsuarios();
@@ -23,7 +26,11 @@ iniciarsesioc(){
   this.router.navigate(['Iniciar-sesion']);
 }
  getshoes(){
-  
+  this.ShoesServicio.getallShoesUsingGET().subscribe(
+    data => {
+      this.Shoes = data;
+      console.log(data);
+      });
 
 }
 
