@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../Service/Usuario.service';
-import { ShoesService } from '../../Service/Shoes.service';
-import { ShoesInterface } from '../../Model/Shoes';
+
 
 
 @Component({
@@ -14,7 +12,7 @@ export class HomeComponent implements OnInit {
   UsuarioInterface: any;
   ShoesInterface: any;
 
-  constructor(private router: Router, private Usuarioservicio: UserService, private Shoesservice: ShoesService) { }
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
   this.getUsuarios();
@@ -25,18 +23,12 @@ iniciarsesioc(){
   this.router.navigate(['Iniciar-sesion']);
 }
  getshoes(){
-  this.Shoesservice.getShoes().subscribe((data: {})=>{
-    console.log(data);
-    this.ShoesInterface= data;
- });
+  
 
 }
 
 getUsuarios(){
-  this.Usuarioservicio.getUsuarios().subscribe((data: {})=>{
-    console.log(data);
-    this.UsuarioInterface= data;
- });
+  
 
 }
 }
