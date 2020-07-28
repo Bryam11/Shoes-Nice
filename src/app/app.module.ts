@@ -20,6 +20,7 @@ import { ShoesControllerService } from './Rest/api/shoesController.service';
 import { RegisterShoesComponent } from './Component/register-shoes/register-shoes.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MegaMenuModule,
     ScrollPanelModule,
     DropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FileUploadModule
   ],
   providers: [UsuarioControllerService,ShoesControllerService],
   bootstrap: [AppComponent]

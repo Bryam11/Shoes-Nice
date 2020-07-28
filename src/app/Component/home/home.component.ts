@@ -29,6 +29,7 @@ iniciarsesioc(){
   this.ShoesServicio.getallShoesUsingGET().subscribe(
     data => {
       this.Shoes = data;
+      
       console.log(data);
       });
 

@@ -11,11 +11,12 @@
 
 
             <span class="ui-float-label">
-    <input style="display: block; margin-left: auto; margin-right: auto;"id="float-input" type="text" size="30" pInputText> 
-    <label for="float-input">Color</label>
-</span>
-            <h3>Elija la marca</h3>
-            <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" filter="true" style="display: block; margin-left: 112px; margin-right: auto;">
+                <input style="display: block; margin-left: auto; margin-right: auto;" id="float-input" type="text"
+                    size="30" [(ngModel)]="shoes.shoesColor"pInputText>
+                <label style="color: #003366;" for="float-input"> <strong>Color</strong> </label>
+            </span>
+            <h3 style="color: #003366;">Elija la marca </h3>
+            <p-dropdown [options]="cars" [(ngModel)]="shoes.shoesMarca" filter="true" style="display: block; margin-left: 112px; margin-right: auto;">
                 <ng-template let-item pTemplate="selectedItem">
                     <!--img src="assets/showcase/images/demo/car/{{item.label}}.png" style="width:16px;vertical-align:middle" /-->
                     <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
@@ -28,44 +29,64 @@
                 </ng-template>
             </p-dropdown>
             <br>
-            <br>
-            <br>
+
+
             <span class="ui-float-label">
-    <input style="display: block; margin-left: auto; margin-right: auto;"id="float-input" type="text" size="30" pInputText> 
-    <label for="float-input">Modelo</label>
-</span>
+                <input style="display: block; margin-left: auto; margin-right: auto;" id="float-input" type="text"
+                    size="30" [(ngModel)]="shoes.shoesModelo" pInputText>
+                <label style="color: #003366;" for="float-input"> <strong>Modelo</strong></label>
+            </span>
             <br>
-            <br>
-            <br>
+
+
             <span class="ui-float-label">
-    <input style="display: block; margin-left: auto; margin-right: auto;"id="float-input" type="text" size="30" pInputText> 
-    <label for="float-input">Talla</label>
-</span>
-            <br>
-            <br>
+                <input style="display: block; margin-left: auto; margin-right: auto;" id="float-input" type="text"
+                    size="30" [(ngModel)]="shoes.talla" pInputText>
+                <label style="color: #003366;" for="float-input"> <strong>Talla</strong> </label>
+            </span>
+
+
+
+            <form>
+                <input type="file" name="archivo" (change)="onChange($event)" />
+                <h5 *ngIf="subiendo">Subiendo imagen...</h5>
+                <br />
+                <br />
+                <button pButton type="button" label="Guardar" class="ui-button-raised ui-button-secondary" (click)="onClickSubir($event)"></button>
+            </form>
+
+            <div class="" *ngIf="showImagen" style="width: 700px;">
+                <h1>Imagen subida</h1>
+                <a [href]="urlImagen" target="_blank">Abrir Imagen</a>
+                <img class="imgn-fluid" [src]="urlImagen" alt="" />
+            </div>
+
+            <div class="error" *ngIf="error">
+                <h1>Ha ocurrido un error</h1>
+            </div>
+
+
+
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
 </Body>
