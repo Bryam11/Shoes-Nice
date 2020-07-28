@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
-import { UsuarioInterface } from 'src/app/Model/Usuario';
-import { UserService } from '../../Service/Usuario.service';
+
 
 
 @Component({
@@ -37,11 +36,11 @@ export class RegistrarComponent implements OnInit {
     apiVersion: '2006-03-01',
     params: { Bucket: 'imagenes-usuarios' },
   });
- public usuarios: UsuarioInterface={foto:"",nombre: "",userid: 0}
+// public usuarios: UsuarioInterface={foto:"",nombre: "",userid: 0}
 
 
 
-  constructor(private servicioUsuarios: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
@@ -110,8 +109,8 @@ export class RegistrarComponent implements OnInit {
   }
 
   guardarUsuario(){
-  this.servicioUsuarios.guardarUsuario(this.usuarios).subscribe(data =>{console.log(data)});  
-  alert('Se a registrado correctamente'); 
+ // this.servicioUsuarios.guardarUsuario(this.usuarios).subscribe(data =>{console.log(data)});  
+  //alert('Se a registrado correctamente'); 
 }
   
 }
