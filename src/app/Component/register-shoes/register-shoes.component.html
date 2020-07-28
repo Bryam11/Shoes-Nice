@@ -1,0 +1,71 @@
+<Body>
+    <h1 style="text-align: center;"><span style="color: #003366;">INGRESO DE ZAPATOS</span></h1>
+
+
+
+    <div class="visorbanner">
+        <div id="content">
+            <br>
+            <br>
+
+
+
+            <span class="ui-float-label">
+    <input style="display: block; margin-left: auto; margin-right: auto;"id="float-input" type="text" size="30" pInputText> 
+    <label for="float-input">Color</label>
+</span>
+            <h3>Elija la marca</h3>
+            <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" filter="true" style="display: block; margin-left: 112px; margin-right: auto;">
+                <ng-template let-item pTemplate="selectedItem">
+                    <!--img src="assets/showcase/images/demo/car/{{item.label}}.png" style="width:16px;vertical-align:middle" /-->
+                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                </ng-template>
+                <ng-template let-car pTemplate="item">
+                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                        <!--img src="assets/showcase/images/demo/car/{{car.label}}.png" style="width:24px;position:absolute;top:1px;left:5px" /-->
+                        <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+            <br>
+            <br>
+            <br>
+            <span class="ui-float-label">
+    <input style="display: block; margin-left: auto; margin-right: auto;"id="float-input" type="text" size="30" pInputText> 
+    <label for="float-input">Modelo</label>
+</span>
+            <br>
+            <br>
+            <br>
+            <span class="ui-float-label">
+    <input style="display: block; margin-left: auto; margin-right: auto;"id="float-input" type="text" size="30" pInputText> 
+    <label for="float-input">Talla</label>
+</span>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+</Body>
