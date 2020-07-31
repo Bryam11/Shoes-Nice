@@ -106,7 +106,7 @@ export class RegisterShoesComponent implements OnInit {
   };
 
   guardar() {
-    this.servicioshoes.createPacienteUsingPOST(this.shoes).subscribe(data => {
+    this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
       console.log(this.shoes);
       window.alert('se ha guardado el usuario exitosamente');
     });

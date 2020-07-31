@@ -111,7 +111,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   guardarUsuario(){
-  this.serviceUsuarui.createPacienteUsingPOST1(this.usuarios).subscribe(data =>{console.log(data)});  
+  this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data =>{console.log(data)});  
   alert('Se a registrado correctamente'); 
 }
   

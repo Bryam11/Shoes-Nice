@@ -26,7 +26,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsuarioControllerService {
 
-    protected basePath = '//52.90.14.165/';
+    protected basePath = '//100.26.158.24/';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -56,19 +56,19 @@ export class UsuarioControllerService {
 
 
     /**
-     * createPaciente
+     * createUser
      * 
      * @param body user
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createPacienteUsingPOST1(body: Usuario, observe?: 'body', reportProgress?: boolean): Observable<Usuario>;
-    public createPacienteUsingPOST1(body: Usuario, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Usuario>>;
-    public createPacienteUsingPOST1(body: Usuario, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Usuario>>;
-    public createPacienteUsingPOST1(body: Usuario, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUserUsingPOST(body: Usuario, observe?: 'body', reportProgress?: boolean): Observable<Usuario>;
+    public createUserUsingPOST(body: Usuario, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Usuario>>;
+    public createUserUsingPOST(body: Usuario, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Usuario>>;
+    public createUserUsingPOST(body: Usuario, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createPacienteUsingPOST1.');
+            throw new Error('Required parameter body was null or undefined when calling createUserUsingPOST.');
         }
 
         let headers = this.defaultHeaders;
@@ -94,6 +94,90 @@ export class UsuarioControllerService {
         return this.httpClient.request<Usuario>('post',`${this.basePath}/User/user`,
             {
                 body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * eliminar
+     * 
+     * @param userid userid
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public eliminarUsingDELETE1(userid: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public eliminarUsingDELETE1(userid: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public eliminarUsingDELETE1(userid: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public eliminarUsingDELETE1(userid: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (userid === null || userid === undefined) {
+            throw new Error('Required parameter userid was null or undefined when calling eliminarUsingDELETE1.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/User/${encodeURIComponent(String(userid))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getUsuariosbyNombre
+     * 
+     * @param nombre nombre
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getUsuariosbyNombreUsingGET(nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Usuario>>;
+    public getUsuariosbyNombreUsingGET(nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Usuario>>>;
+    public getUsuariosbyNombreUsingGET(nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Usuario>>>;
+    public getUsuariosbyNombreUsingGET(nombre?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (nombre !== undefined && nombre !== null) {
+            queryParameters = queryParameters.set('nombre', <any>nombre);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<Usuario>>('get',`${this.basePath}/User/shoes/${encodeURIComponent(String(nombre))}`,
+            {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

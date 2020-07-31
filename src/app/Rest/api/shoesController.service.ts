@@ -10,29 +10,27 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent
-} from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from '../encoder';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
 import { Shoes } from '../model/shoes';
 
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
 export class ShoesControllerService {
 
-    protected basePath = '//52.90.14.165/';
+    protected basePath = '//100.26.158.24/';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -58,19 +56,19 @@ export class ShoesControllerService {
 
 
     /**
-     * createPaciente
+     * createShoes
      * 
      * @param body shoes
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createPacienteUsingPOST(body: Shoes, observe?: 'body', reportProgress?: boolean): Observable<Shoes>;
-    public createPacienteUsingPOST(body: Shoes, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Shoes>>;
-    public createPacienteUsingPOST(body: Shoes, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Shoes>>;
-    public createPacienteUsingPOST(body: Shoes, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public createShoesUsingPOST(body: Shoes, observe?: 'body', reportProgress?: boolean): Observable<Shoes>;
+    public createShoesUsingPOST(body: Shoes, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Shoes>>;
+    public createShoesUsingPOST(body: Shoes, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Shoes>>;
+    public createShoesUsingPOST(body: Shoes, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createPacienteUsingPOST.');
+            throw new Error('Required parameter body was null or undefined when calling createShoesUsingPOST.');
         }
 
         let headers = this.defaultHeaders;
@@ -93,9 +91,49 @@ export class ShoesControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Shoes>('post', `${this.basePath}/Shoes/shoes`,
+        return this.httpClient.request<Shoes>('post',`${this.basePath}/Shoes/shoes`,
             {
                 body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * eliminar
+     * 
+     * @param shoesid shoesid
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public eliminarUsingDELETE(shoesid: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public eliminarUsingDELETE(shoesid: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public eliminarUsingDELETE(shoesid: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public eliminarUsingDELETE(shoesid: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (shoesid === null || shoesid === undefined) {
+            throw new Error('Required parameter shoesid was null or undefined when calling eliminarUsingDELETE.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/Shoes/${encodeURIComponent(String(shoesid))}`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -114,10 +152,10 @@ export class ShoesControllerService {
     public getShoesByMarcaUsingGET(shoesMarca?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Shoes>>;
     public getShoesByMarcaUsingGET(shoesMarca?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Shoes>>>;
     public getShoesByMarcaUsingGET(shoesMarca?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Shoes>>>;
-    public getShoesByMarcaUsingGET(shoesMarca?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public getShoesByMarcaUsingGET(shoesMarca?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (shoesMarca !== undefined && shoesMarca !== null) {
             queryParameters = queryParameters.set('shoesMarca', <any>shoesMarca);
         }
@@ -137,7 +175,7 @@ export class ShoesControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Shoes>>('get', `${this.basePath}/Shoes/shoes/${encodeURIComponent(String(shoesMarca))}`,
+        return this.httpClient.request<Array<Shoes>>('get',`${this.basePath}/Shoes/shoes/${encodeURIComponent(String(shoesMarca))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -157,7 +195,7 @@ export class ShoesControllerService {
     public getallShoesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Shoes>>;
     public getallShoesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Shoes>>>;
     public getallShoesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Shoes>>>;
-    public getallShoesUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public getallShoesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -174,7 +212,7 @@ export class ShoesControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Shoes>>('get', `${this.basePath}/Shoes/shoes`,
+        return this.httpClient.request<Array<Shoes>>('get',`${this.basePath}/Shoes/shoes`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
