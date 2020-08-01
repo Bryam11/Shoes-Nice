@@ -10,7 +10,7 @@ import { ShoesControllerService, Shoes } from 'src/app/Rest';
 })
 
 export class CatalogoComponent implements OnInit {
-  title = 'consumo';
+inicio: String= '';
   marca: string;
   items: MegaMenuItem[];
   shoes= new Array<Shoes>();
@@ -19,7 +19,7 @@ export class CatalogoComponent implements OnInit {
 
   zapa: Shoes[];
   responsiveOptions;
-
+  title = 'consumo';
   
   constructor(private shoesService: ShoesControllerService) {
     this.responsiveOptions = [
@@ -58,7 +58,7 @@ export class CatalogoComponent implements OnInit {
                   [
                       {
                           items: [
-                              {label: '👟Registrar Zapatos',routerLink: 'pet'}, 
+                              {label: '👟Registrar Zapatos',routerLink: 'register-shoes'}, 
                               {label: '🔙Salir', routerLink: ''}
                             ]
                       },

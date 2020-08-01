@@ -80,17 +80,17 @@ export class RegistrarComponent implements OnInit {
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
       try {
-        console.log(this.foto);
+      //  console.log(this.foto);
         this.subiendo = true;
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketName,
-            Key: this.usuarios.nombre + '.png',
+            Key: this.nombre + '.png',
             Body: this.imageRegistro,
             ACL: 'public-read',
           },
         }).promise();
-        alert('se ha guardado la imagen correctamente');
+      //  alert('se ha guardado la imagen correctamente');
   
         this.usuarios.foto = data.Location;
         this.subiendo = false;
@@ -105,9 +105,6 @@ export class RegistrarComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
-   
-    this.guardarUsuario();
-
   }
 
   guardarUsuario(){
@@ -115,4 +112,6 @@ export class RegistrarComponent implements OnInit {
   alert('Se a registrado correctamente'); 
 }
   
+     
+    
 }
