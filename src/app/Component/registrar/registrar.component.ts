@@ -3,6 +3,7 @@ import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
 import { UsuarioControllerService } from '../../Rest/api/usuarioController.service';
 import { Usuario } from 'src/app/Rest';
+import { Router } from '@angular/router';
 
 
 
@@ -32,17 +33,21 @@ export class RegistrarComponent implements OnInit {
   urlImagen = null;
   imageRegistro: any;
 
+
   albumBucketName = 'imagenes-usuarios';
 
   s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     params: { Bucket: 'imagenes-usuarios' },
   });
- public usuarios: Usuario={foto:"",nombre: "",userid: 0}
+  public usuarios: Usuario = { foto: "", nombre: "", userid: 0 };
+  usuarioslist = new Array<Usuario>();
 
 
 
-  constructor(private serviceUsuarui:UsuarioControllerService) { }
+  constructor(private serviceUsuarui: UsuarioControllerService, private roueter:Router) {
+    this.usuarios = {};
+  }
 
   ngOnInit(): void {
 
@@ -50,6 +55,7 @@ export class RegistrarComponent implements OnInit {
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
     });
+    this.usuarios = {};
   }
   public ngAfterViewInit() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -66,21 +72,25 @@ export class RegistrarComponent implements OnInit {
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 600, 440);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
     this.foto = this.foto.split(",")[1];
-   this.image = {
+    this.image = {
       Image: {
         Bytes: new Buffer(this.foto, 'base64')
       },
 
     }
-   
+
+  }
+
+  refresh(){
+    this.roueter.navigate(['registrar-Usuario']);
   }
 
   onClickSubir = async (event) => {
-
+    this.guardar();
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
       try {
-        console.log(this.foto);
+        //console.log(this.foto);
         this.subiendo = true;
         const data = await new AWS.S3.ManagedUpload({
           params: {
@@ -91,10 +101,10 @@ export class RegistrarComponent implements OnInit {
           },
         }).promise();
         alert('se ha guardado la imagen correctamente');
-  
+
         this.usuarios.foto = data.Location;
         this.subiendo = false;
-        this.showImagen  = true;
+        this.showImagen = true;
       } catch (error) {
         this.error = true;
         const bucle = setInterval(() => {
@@ -105,14 +115,23 @@ export class RegistrarComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
-   
-    this.guardarUsuario();
+
 
   }
-
-  guardarUsuario(){
-  this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data =>{console.log(data)});  
-  alert('Se a registrado correctamente'); 
-}
   
+
+  guardar() {
+
+    this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data => {
+      alert('Se a registrado correctamente');
+      console.log(data)
+    }, (err)=>{
+      console.log("los datos estan duplicados");
+      alert(`este nombre de ususario ya existe pruebe con ${this.usuarios.nombre}11`);
+      location.reload();
+    });
+  }
+
+ 
+
 }

@@ -58,9 +58,13 @@ export class CatalogoComponent implements OnInit {
                   [
                       {
                           items: [
-                              {label: '👟Registrar Zapatos',routerLink: 'pet'}, 
-                              {label: '🔙Salir', routerLink: ''}
+                              {label: '👟Registrar Zapatos',routerLink: ''}
+                             
                             ]
+                      },
+                      {
+
+                        items: [{ label: 'Salir' ,routerLink:''}]
                       },
 
                   ],
