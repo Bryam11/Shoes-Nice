@@ -91,13 +91,16 @@ export class IniciarSesionComponent implements OnInit {
           let position = data.Face.BoundingBox
           let similarity = data.Similarity
           let conficencial = data.Confidence
-          alert(`El paresido entre las dos fotos es de ${similarity}%`)
+          alert(`El paresido entre las dos fotos es de ${similarity}%`);
           if (similarity > 95) {
             alert(`Puede iniciar sesion`);
+            
           } else {
             alert(`No Puede iniciar sesion`);
           }
         });
+       
+
       }
     });
   }

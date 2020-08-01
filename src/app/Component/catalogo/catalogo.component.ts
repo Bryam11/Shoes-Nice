@@ -58,9 +58,13 @@ inicio: String= '';
                   [
                       {
                           items: [
+
                               {label: '👟Registrar Zapatos',routerLink: 'register-shoes'}, 
-                              {label: '🔙Salir', routerLink: ''}
                             ]
+                      },
+                      {
+
+                        items: [{ label: 'Salir' ,routerLink:''}]
                       },
 
                   ],

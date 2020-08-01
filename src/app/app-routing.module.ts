@@ -31,6 +31,9 @@ const routes: Routes = [
     path: 'ver-catalogo/register-shoes',
     component: RegisterShoesComponent
   },
+  //{
+    //path: '**', pathMatch: 'full', redirectTo: 'home'
+ // }
  
  
 ];
