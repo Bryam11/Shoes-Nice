@@ -94,10 +94,10 @@ export class IniciarSesionComponent implements OnInit {
           alert(`El paresido entre las dos fotos es de ${similarity}%`);
           if (similarity > 95) {
             alert(`puede iniciar secion ${similarity}%`);
-          window.open('http://localhost:4200/ver-catalogo','ventana1','"width=120,height=300')
+          window.open('http://localhost:4200/ver-catalogo','ventana1','"width=620,height=600')
           } else {
             alert(`No Puede iniciar sesion`);
-           location.reload();
+          //  location.reload();
           }
         })
        
@@ -109,15 +109,17 @@ export class IniciarSesionComponent implements OnInit {
   }
 
 
-  
-  cambiardeventana() {
-    if(+1){
-      this.comparar();
-    }
-  }
+  // num=1
+  // cambiardeventana() {
+  //   if(num >=2 ){
+  //     num +1;
+  //     this.comparar();
+  //   }
+  //   this.ventana()
+  // }
 
-  ventana(){
-    this.router.navigate(['ver-catalogo']);
-  };
+  // ventana(){
+  //   this.router.navigate(['ver-catalogo']);
+  // };
 
 }
