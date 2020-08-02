@@ -86,20 +86,22 @@ export class RegistrarComponent implements OnInit {
   }
 
   onClickSubir = async (event) => {
-    this.guardar();
+   
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
+      
       try {
         this.subiendo = true;
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketName,
-            Key: this.nombre + '.png',
+            Key: this.usuarios.nombre + '.png',
             Body: this.imageRegistro,
             ACL: 'public-read',
           },
         }).promise();
         this.usuarios.foto = data.Location;
+        
         this.subiendo = false;
         this.showImagen = true;
       } catch (error) {
