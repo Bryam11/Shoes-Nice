@@ -94,19 +94,34 @@ export class IniciarSesionComponent implements OnInit {
           let conficencial = data.Confidence
           alert(`El paresido entre las dos fotos es de ${similarity}%`);
           if (similarity > 95) {
-            alert(`Puede iniciar sesion`);
-            this.router.navigate(['ver-catalogo']);  
+
+            
+
+            alert(`puede iniciar secion ${similarity}%`);
+          window.open('http://localhost:4200/ver-catalogo','ventana1','"width=120,height=300')
           } else {
             alert(`No Puede iniciar sesion`);
+           location.reload();
           }
         });
 
 
       }
-    });
+    
+    })
+   
   }
+
+
+  
   cambiardeventana() {
-    this.router.navigate(['ver-catalogo']);
+    if(+1){
+      this.comparar();
+    }
   }
+
+  ventana(){
+    this.router.navigate(['ver-catalogo']);
+  };
 
 }

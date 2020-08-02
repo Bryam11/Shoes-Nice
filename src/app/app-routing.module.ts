@@ -28,7 +28,7 @@ const routes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'register-shoes',
+    path: 'ver-catalogo/register-shoes',
     component: RegisterShoesComponent
   },
   //{
