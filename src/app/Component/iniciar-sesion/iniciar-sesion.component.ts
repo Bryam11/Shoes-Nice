@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { inject } from '@angular/core/testing';
 @Component({
   selector: 'app-iniciar-sesion',
@@ -25,7 +25,7 @@ export class IniciarSesionComponent implements OnInit {
   nombre: string;
 
 
-  constructor(private  router: Router) {
+  constructor(private router: Router) {
     AWS.config.region = 'us-east-1'; // Región
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
@@ -55,7 +55,7 @@ export class IniciarSesionComponent implements OnInit {
       },
       Attributes: ['ALL']
     }
-    
+
   }
 
 
@@ -85,6 +85,7 @@ export class IniciarSesionComponent implements OnInit {
         console.log(params);
       } else {
         console.log(params);
+
         response.FaceMatches.forEach(data => {
           console.log(data);
 
@@ -94,12 +95,12 @@ export class IniciarSesionComponent implements OnInit {
           alert(`El paresido entre las dos fotos es de ${similarity}%`);
           if (similarity > 95) {
             alert(`Puede iniciar sesion`);
-            
+            this.router.navigate(['ver-catalogo']);  
           } else {
             alert(`No Puede iniciar sesion`);
           }
         });
-       
+
 
       }
     });

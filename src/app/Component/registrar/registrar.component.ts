@@ -86,7 +86,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   onClickSubir = async (event) => {
-    this.guardar();
+    
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
       try {
@@ -100,6 +100,7 @@ export class RegistrarComponent implements OnInit {
             ACL: 'public-read',
           },
         }).promise();
+        this.guardar();
         alert('se ha guardado la imagen correctamente');
 
         this.usuarios.foto = data.Location;
@@ -116,7 +117,7 @@ export class RegistrarComponent implements OnInit {
       alert('SELECCIONE UN ARCHIVO');
     }
 
-
+  
   }
   
 
