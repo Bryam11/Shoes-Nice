@@ -86,7 +86,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   onClickSubir = async (event) => {
-   
+
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
       
@@ -114,6 +114,7 @@ export class RegistrarComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
+
   }
   
 
