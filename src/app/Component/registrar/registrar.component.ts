@@ -85,35 +85,82 @@ export class RegistrarComponent implements OnInit {
     this.roueter.navigate(['registrar-Usuario']);
   }
 
-  onClickSubir = async (event) => {
+  
 
+  onClickSubir = async (event) => {
     this.imageRegistro = new Buffer(this.foto, 'base64');
-    if (this.foto) {
+    if(this.usuarios.nombre){
+      var params = {
+        TargetImage: {
+          S3Object: {
+            Bucket: "imagenes-usuarios",
+            Name: this.usuarios.nombre + '.png'
+          }
+  
+        },
+        SourceImage: {
+          Bytes: new Buffer(this.foto, 'base64')
+        },
+        SimilarityThreshold: 0
+      };
+      console.log(this.image);
+  
+      this.detector = new AWS.Rekognition();
+  
+      this.detector.compareFaces(params, function (error, response) {
+  
+        if (error) {
+          console.log(error);
+          console.log(params);
+        } else {
+          console.log(params);
+  
+          response.FaceMatches.forEach(data => {
+            console.log(data);
+  
+            let position = data.Face.BoundingBox
+            let similarity = data.Similarity
+            let conficencial = data.Confidence
+            if (similarity > 95) {
+              alert(`Este usuario ya se encuentra registrado`);
+              location.reload();
+            }
+          });
+  
+  
+        }
       
-      try {
-        this.subiendo = true;
-        const data = await new AWS.S3.ManagedUpload({
-          params: {
-            Bucket: this.albumBucketName,
-            Key: this.usuarios.nombre + '.png',
-            Body: this.imageRegistro,
-            ACL: 'public-read',
-          },
-        }).promise();
-        this.usuarios.foto = data.Location;
-        
-        this.subiendo = false;
-        this.showImagen = true;
-      } catch (error) {
-        this.error = true;
-        const bucle = setInterval(() => {
-          this.error = false;
-          clearInterval(bucle);
-        }, 2000);
+      })
+    }else{
+      if (this.foto) {
+        try {
+          this.subiendo = true;
+          
+          const data = await new AWS.S3.ManagedUpload({
+            params: {
+              Bucket: this.albumBucketName,
+              Key: this.usuarios.nombre + '.png',
+              Body: this.imageRegistro,
+              ACL: 'public-read',
+            },
+          }).promise();
+          alert('se a guardado la foto correctamente')
+          this.usuarios.foto = data.Location;
+          this.guardar();
+          this.subiendo = false;
+          this.showImagen = true;
+        } catch (error) {
+          this.error = true;
+          const bucle = setInterval(() => {
+            this.error = false;
+            clearInterval(bucle);
+          }, 2000);
+        }
+      } else {
+        alert('SELECCIONE UN ARCHIVO');
       }
-    } else {
-      alert('SELECCIONE UN ARCHIVO');
     }
+  
 
   }
   
@@ -129,4 +176,53 @@ export class RegistrarComponent implements OnInit {
       location.reload();
     });
   }
+
+
+
+  public comparar() {
+    var params = {
+      TargetImage: {
+        S3Object: {
+          Bucket: "imagenes-usuarios",
+          Name: this.usuarios.nombre + '.png'
+        }
+
+      },
+      SourceImage: {
+        Bytes: new Buffer(this.foto, 'base64')
+      },
+      SimilarityThreshold: 0
+    };
+    console.log(this.image);
+
+    this.detector = new AWS.Rekognition();
+
+    this.detector.compareFaces(params, function (error, response) {
+
+      if (error) {
+        console.log(error);
+        console.log(params);
+      } else {
+        console.log(params);
+
+        response.FaceMatches.forEach(data => {
+          console.log(data);
+
+          let position = data.Face.BoundingBox
+          let similarity = data.Similarity
+          let conficencial = data.Confidence
+          if (similarity > 95) {
+            alert(`Este usuario ya se encuentra registrado`);
+            location.reload();
+          }
+        });
+
+
+      }
+    
+    })
+   
+  }
+
+
 }

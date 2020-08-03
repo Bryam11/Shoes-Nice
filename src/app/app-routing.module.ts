@@ -10,7 +10,7 @@ import { RegisterShoesComponent } from './Component/register-shoes/register-shoe
 const routes: Routes = [
   {
 
-    path: '',
+    path: 'Home',
 
     component: HomeComponent
   },
@@ -28,7 +28,7 @@ const routes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'ver-catalogo/register-shoes',
+    path: 'register-shoes',
     component: RegisterShoesComponent
   },
   //{

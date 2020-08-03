@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://image.jimcdn.com/app/cms/image/transf/none/path/s99f39f2610b1dca2/backgroundarea/ie8f0d218e47a5121/version/1551585086/image.jpg);
+    background-image: url(https://i.pinimg.com/originals/70/b7/07/70b707af0636cd023128d399c7a266f1.gif);
     background-size: 1100px 1830px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -37,7 +37,7 @@ button.btn {
     height: 50px;
     width: 250px;
     background-color: #052281;
-    color: white;
+    color: black;
     font-weight: 600;
     font-size: 15px;
 }

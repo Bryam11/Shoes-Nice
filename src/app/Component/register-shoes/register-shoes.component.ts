@@ -56,11 +56,10 @@ export class RegisterShoesComponent implements OnInit {
     });
     this.cars = [
       { label: 'Nike', value: 'NIKE' },
-      { label: 'Adiddas', value: 'ADDIDAS' },
+      { label: 'Adidas', value: 'ADIDAS' },
       { label: 'Puma', value: 'PUMA' },
       { label: 'Reebok', value: 'REEBOK' },
       { label: 'Vans', value: 'VANS' },
-      { label: 'Totto', value: 'TOTTO' },
     ];
   }
 
@@ -97,6 +96,11 @@ export class RegisterShoesComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
+
+    this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
+      console.log(this.shoes);
+      window.alert('se ha guardado el usuario exitosamente');
+    });
   };
 
   onChange = (event) => {

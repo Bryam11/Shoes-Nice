@@ -98,7 +98,8 @@ export class IniciarSesionComponent implements OnInit {
             
 
             alert(`puede iniciar secion ${similarity}%`);
-          window.open('http://localhost:4200/ver-catalogo','ventana1','"width=620,height=600')
+          //window.open('http://localhost:4200/ver-catalogo','_self','"width=620,height=1000')
+          window.open('ver-catalogo','_self','"width=620,height=1000')
           } else {
             alert(`No Puede iniciar sesion`);
           //  location.reload();

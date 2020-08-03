@@ -44,35 +44,13 @@ inicio: String= '';
         {label: 'NIKE', value: 'NIKE'},
         {label: 'ADIDAS', value: 'ADIDAS'},
         {label: 'PUMA', value: 'PUMA'},
-        {label: 'REBOOK', value: 'REBOOK'},
+        {label: 'REEBOK', value: 'REEBOK'},
+        { label: 'VANS', value: 'VANS' },
     ];
 }
 
 
   ngOnInit() {
-
-      this.items = [
-          {
-              label: '📁MENU',
-              items: [
-                  [
-                      {
-                          items: [
-
-                              {label: '👟Registrar Zapatos',routerLink: 'register-shoes'}, 
-                            ]
-                      },
-                      {
-
-                        items: [{ label: 'Salir' ,routerLink:''}]
-                      },
-
-                  ],
-
-              ]
-          },
-         
-      ];
       this.allShoes()
   }
 
