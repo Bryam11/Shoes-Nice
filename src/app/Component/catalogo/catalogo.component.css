@@ -1,28 +1,33 @@
-.visorbanner{
-    overflow:hidden; 
-    position: relative;/*tambien puede ser absolute si se quiere*/
+.visorbanner {
+    overflow: hidden;
+    position: relative;
+    /*tambien puede ser absolute si se quiere*/
     top: 0px;
     left: 0px;
-    width: 1300px;
-    height: 580px;
-    }
-   .slide
-   {
-   position: absolute;
-   top: 0px;
-   left: 0px;
-   }
-   #content {
-    overflow: auto;
-    width: 150%;
-    background:rgba(18, 1, 65, 0.986)y;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.slide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 #content {
     overflow: auto;
     width: 100%;
-    background:rgba(18, 1, 65, 0.986)y;
+    background: rgba(18, 1, 65, 0.986)y;
 }
+
+#content {
+    overflow: auto;
+    width: 100%;
+    background: rgba(18, 1, 65, 0.986)y;
+}
+
 #left {
     float: left;
 }
@@ -30,30 +35,39 @@
 #right {
     float: right;
 }
-#left{
-    width:65%;
-    margin:60px;
-    padding: -5em;
-    background: rgba(18, 1, 65, 0.986)y; 
-}
 
-#left1{
-    width:50%;
-    margin:-10px;
-    padding: em;
-    background: rgba(18, 1, 65, 0.986)y; 
-}
-
-#right1 {
-    width:50%;
-    margin:10px;
+#left {
+    width: 65%;
+    margin: 60px;
     padding: -5em;
     background: rgba(18, 1, 65, 0.986)y;
 }
+
+#left1 {
+    width: 50%;
+    margin: -10px;
+    padding: em;
+    background: rgba(18, 1, 65, 0.986)y;
+}
+
+#right1 {
+    width: 50%;
+    margin: 10px;
+    padding: -5em;
+    background: rgba(18, 1, 65, 0.986)y;
+}
+
 .center {
     margin-left: auto;
     margin-right: auto;
     display: block
 }
 
-
+body {
+    background-image: url(../../../assets/Imagenes/FONDOZAPAOS.jpg);
+    background-size: 1100px 1950px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

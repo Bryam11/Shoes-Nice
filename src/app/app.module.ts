@@ -24,6 +24,9 @@ import { RegisterShoesComponent } from './Component/register-shoes/register-shoe
 import {DropdownModule} from 'primeng/dropdown';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FileUploadModule} from 'primeng/fileupload';
+import {TooltipModule} from 'primeng/tooltip';
+import {GalleriaModule} from 'primeng/galleria';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,11 @@ import {FileUploadModule} from 'primeng/fileupload';
     CarouselModule,
     DropdownModule,
     BrowserAnimationsModule,
-    FileUploadModule
+    FileUploadModule,  
+    TooltipModule,
+    GalleriaModule,
+    CardModule
+
   ],
   providers: [UsuarioControllerService,ShoesControllerService],
   bootstrap: [AppComponent]

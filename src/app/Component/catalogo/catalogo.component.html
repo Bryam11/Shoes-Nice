@@ -1,61 +1,77 @@
-<table background="https://images5.alphacoders.com/101/1013567.jpg">
+<body>
 
-  <br>
-  
-  <h1 style="text-align: center;"><span style="color: #000000;"><strong>CATALOGO DE ZAPATOS DEPORTIVOS</strong></span></h1>
-  
-  <div class="visorbanner">
-    <div id="content">
-  
-  
-      <div id="left">
-        <p-carousel [value]="zapa" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-          <br>
-          <br>
-          <ng-template let-zap pTemplate="item">
-            
-              <div class="zap-details">
-                  <div class="p-grid p-nogutter">
-                    
-                      <div class="p-col-12">
-                          <img src="{{zap.url}}" width="150" height="130"/>
-                      </div>
-                      <div class="p-col-12 car-data"  >
-                       
-                        <div class="zap-title">{{zap.shoesMarca}}</div>
-                        <div class="zap-subtitle">{{zap.shoesColor}}</div>
-                    
-                      </div>
-                    
-                  </div>
-              </div>
-        
-          </ng-template>
-        </p-carousel>
-      </div>
-      
-  
-      <div id="right">
-  <h3>🔎Buscar Por Marcas🔍</h3>
-  <p-listbox [options]="cars" [(ngModel)]="selectedCar" [listStyle]="{'max-height':'250px'}">
-    <ng-template let-car pTemplate="item">
-      <div class="ui-helper-clearfix">
-        <img src="../../../assets/Imagenes/{{car.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="48">
-        <span style="float:right;margin:20px 10px 0 0">{{car.value}}</span>
-      </div>
-    </ng-template>
-  
-  </p-listbox>
-  
-  
-  <p-button (click)="buscarPorMarca()" label="Buscar" styleClass="ui-button-primary"></p-button>
-  </div>
-  
-  
-  
-  
-  </div>
-  </div>
-    
-</table>
+    <br>
 
+    <h1 style="text-align: center;"><span style="color: #000000;"><strong>CATALOGO DE ZAPATOS DEPORTIVOS</strong></span></h1>
+
+    <div class="visorbanner">
+        <div id="content">
+
+
+            <div id="left">
+                <!--p-carousel [value]="zapa" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+                    <br>
+                    <br>
+                    <ng-template let-zap pTemplate="item">
+
+                        <div class="zap-details">
+                            <div class="p-grid p-nogutter">
+
+                                <div class="p-col-12">
+                                    <img src="{{zap.url}}" width="150" height="130" />
+                                </div>
+                                <div class="p-col-12 car-data">
+
+                                    <div class="zap-title">{{zap.shoesMarca}}</div>
+                                    <div class="zap-subtitle">{{zap.shoesColor}}</div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </ng-template>
+                </p-carousel-->
+                <p-galleria [(value)]="zapa" [responsiveOptions]="responsiveOptions" [containerStyle]="{}" [numVisible]="3" width="440" height="740">
+                    <ng-template pTemplate="item" let-shoes>
+                        <img src="{{shoes.url}}" width="700" height="700" />
+                    </ng-template>
+                    <ng-template pTemplate="thumbnail" let-shoes>
+                        <div class="p-grid p-nogutter p-justify-center">
+                            <img src="{{shoes.url}}" width="140" height="130" />
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="caption" let-shoes>
+                        <h4 style="margin-bottom: .5rem; color: #ffffff;">{{shoes.shoesMarca}}</h4>
+                        <p>{{shoes.shoesColor}}</p>
+                    </ng-template>
+                </p-galleria>
+
+
+
+            </div>
+
+
+            <div id="right">
+                <h3>🔎Buscar Por Marcas🔍</h3>
+                <p-listbox [options]="cars" [(ngModel)]="selectedCar" [listStyle]="{'max-height':'250px'}">
+                    <ng-template let-car pTemplate="item">
+                        <div class="ui-helper-clearfix">
+                            <img src="../../../assets/Imagenes/{{car.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="48">
+                            <span style="float:right;margin:20px 10px 0 0">{{car.value}}</span>
+                        </div>
+                    </ng-template>
+
+                </p-listbox>
+
+
+                <p-button (click)="buscarPorMarca()" label="Buscar" styleClass="ui-button-primary"></p-button>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+</body>

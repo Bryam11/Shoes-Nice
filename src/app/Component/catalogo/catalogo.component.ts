@@ -6,66 +6,70 @@ import { ShoesControllerService, Shoes } from 'src/app/Rest';
   selector: 'app-catalogo',
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css'],
-  
+
 })
 
 export class CatalogoComponent implements OnInit {
-inicio: String= '';
+  inicio: String = '';
   marca: string;
   items: MegaMenuItem[];
-  shoes= new Array<Shoes>();
+  shoes = new Array<Shoes>();
   cars: SelectItem[];
   selectedCar: string = 'Ninguna';
 
   zapa: Shoes[];
   responsiveOptions;
-  title = 'consumo';
   
+  title = 'consumo';
+
   constructor(private shoesService: ShoesControllerService) {
     this.responsiveOptions = [
       {
-          breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
       },
       {
-          breakpoint: '768px',
-          numVisible: 2,
-          numScroll: 2
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
       },
       {
-          breakpoint: '560px',
-          numVisible: 1,
-          numScroll: 1
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
       }
-  ];
-
-    this.cars = [
-        {label: 'NIKE', value: 'NIKE'},
-        {label: 'ADIDAS', value: 'ADIDAS'},
-        {label: 'PUMA', value: 'PUMA'},
-        {label: 'REEBOK', value: 'REEBOK'},
-        { label: 'VANS', value: 'VANS' },
     ];
-}
+   
+    this.cars = [
+      { label: 'NIKE', value: 'NIKE' },
+      { label: 'ADIDAS', value: 'ADIDAS' },
+      { label: 'PUMA', value: 'PUMA' },
+      { label: 'REEBOK', value: 'REEBOK' },
+      { label: 'VANS', value: 'VANS' },
+    ];
+  }
 
 
   ngOnInit() {
-      this.allShoes()
+    this.allShoes()
   }
 
-  allShoes(){
-this.shoesService.getallShoesUsingGET().subscribe(data =>{
-    this.shoes = data;
-    this.zapa=data;
-})
+  allShoes() {
+    this.shoesService.getallShoesUsingGET().subscribe(data => {
+      this.shoes = data;
+      this.zapa = data;
+      console.log(this.zapa);
+      
+    });
   }
 
-  buscarPorMarca(){
+
+  buscarPorMarca() {
     this.shoesService.getShoesByMarcaUsingGET(this.selectedCar).subscribe(data => {
       this.shoes = data;
-      this.zapa=data;
-    console.log(this.shoes);
+      this.zapa = data;
+      console.log(this.shoes);
     });
-   }
+  }
 }

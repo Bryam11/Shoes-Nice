@@ -8,14 +8,15 @@
                 <div id="miCameraOnline">
                     <video #video id="video" width="300" height="240" autoplay class="center"></video>
                     <h2 style="text-align: center;"><span style="color: #ffffff;">Nombre de Usuario</span></h2>
-                    <input style="display: block; margin-left: 112px; margin-right: auto;" type="name" [(ngModel)]="usuarios.nombre">
-                    <!-- Password -->
+                    <input style="margin-left: 112px; margin-right: auto;" type="text" pInputText pTooltip="Ingrese your username" placeholder="Right" tooltipEvent="focus" [(ngModel)]="usuarios.nombre">
+
+
                     <h2 style="display: block; margin-left: 115px; margin-right: auto;"><span style="color: #ffffff;">Capturar rostro</span></h2>
 
                     <button (click)="capturar()" style="display: block; margin-left: 175px; margin-right: auto;" pButton type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
                     <br>
                     <button (click)="onClickSubir($event)" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
-                    <!-- <button class="ui-button-rounded ui-button-warning" style="display: block; margin-left: 60px; margin-right: auto;" (click)="onClickSubir($event)">Registrar</button> -->
+
 
                 </div>
             </div>

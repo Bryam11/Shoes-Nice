@@ -97,10 +97,7 @@ export class RegisterShoesComponent implements OnInit {
       alert('SELECCIONE UN ARCHIVO');
     }
 
-    this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
-      console.log(this.shoes);
-      window.alert('se ha guardado el usuario exitosamente');
-    });
+   
   };
 
   onChange = (event) => {
