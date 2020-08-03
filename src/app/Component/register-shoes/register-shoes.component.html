@@ -50,7 +50,8 @@
 
             <form>
                 <br>
-                <input type="file" name="archivo" (change)="onChange($event)" />
+                <!-- <input type="file" name="archivo" (change)="onChange($event)" /> -->
+                <p-fileUpload mode="basic" name="archivo" (change)="onChange($event)"></p-fileUpload>
                 <h5 *ngIf="subiendo">Subiendo imagen...</h5>
                 <br />
                 <br />

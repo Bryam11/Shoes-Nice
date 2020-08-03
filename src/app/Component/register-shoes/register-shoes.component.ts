@@ -96,19 +96,16 @@ export class RegisterShoesComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
-
-    this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
-      console.log(this.shoes);
-      window.alert('se ha guardado el usuario exitosamente');
-    });
   };
 
   onChange = (event) => {
     if (event.target.files.length > 0) {
       this.archivo = event.target.files[0];
+      console.log(this.archivo)
     }
-  };
+  }
 
+  
   guardar() {
     this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
       console.log(this.shoes);
