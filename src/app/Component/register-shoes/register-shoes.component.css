@@ -26,8 +26,8 @@ body {
     position: relative;
     /*tambien puede ser absolute si se quiere*/
     top: 0px;
-    left: 450px;
-    width: 400px;
+    left: 625px;
+    width:400px;
     height: 480px;
     background-color: rgb(204, 229, 245);
 }
@@ -36,4 +36,23 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
+}
+
+div.fileinputs {
+	position: relative;
+}
+
+div.fakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+
+input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	opacity: 0;
+	z-index: 2;
 }
