@@ -10,24 +10,25 @@ body {
 #content {
     overflow: auto;
     width: 150%;
-    background:rgba(18, 1, 65, 0.986)y;
+    background: rgba(18, 1, 65, 0.986)y;
 }
 
 #content {
     overflow: auto;
     width: 100%;
-    background:rgba(18, 1, 65, 0.986)y;
+    background: rgba(18, 1, 65, 0.986)y;
 }
-#left{
-    width:36%;
-    margin:5px;
+
+#left {
+    width: 36%;
+    margin: 5px;
     padding: 2em;
-    background: rgba(18, 1, 65, 0.986)y; 
+    background: rgba(18, 1, 65, 0.986)y;
 }
 
 #right {
-    width:20%;
-    margin:5px;
+    width: 20%;
+    margin: 5px;
     padding: 2em;
     background: rgba(18, 1, 65, 0.986)y;
 }
@@ -77,32 +78,39 @@ a.btnAzul {
     display: block
 }
 
-.visorbanner{
-    overflow:hidden; 
-    position: relative;/*tambien puede ser absolute si se quiere*/
+.visorbanner {
+    overflow: hidden;
+    position: relative;
+    /*tambien puede ser absolute si se quiere*/
     top: 0px;
     left: 0px;
     width: 1300px;
     height: 680px;
-    }
-   .slide
-   {
-   position: absolute;
-   top: 0px;
-   left: 0px;
-   }
+}
 
-   .visorbanner2{
-    overflow:hidden; 
-    position: relative;/*tambien puede ser absolute si se quiere*/
+.slide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.visorbanner2 {
+    overflow: hidden;
+    position: relative;
+    /*tambien puede ser absolute si se quiere*/
     top: 0px;
     left: 400px;
     width: 500px;
     height: 450px;
-    }
-   .slide
-   {
-   position: absolute;
-   top: 0px;
-   left: 0px;
-   }
+}
+
+.slide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+ :host ::ng-deep button {
+    margin-left: 700px;
+    margin-right: 0.25em;
+}

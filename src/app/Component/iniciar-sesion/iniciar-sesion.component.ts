@@ -83,6 +83,7 @@ export class IniciarSesionComponent implements OnInit {
       if (error) {
         console.log(error);
         console.log(params);
+        alert('Revisebien su nombre de usuario o su foto ');
       } else {
         console.log(params);
 
@@ -114,17 +115,6 @@ export class IniciarSesionComponent implements OnInit {
   }
 
 
-  // num=1
-  // cambiardeventana() {
-  //   if(num >=2 ){
-  //     num +1;
-  //     this.comparar();
-  //   }
-  //   this.ventana()
-  // }
 
-  // ventana(){
-  //   this.router.navigate(['ver-catalogo']);
-  // };
 
 }

@@ -4,6 +4,7 @@ import { Buffer } from 'buffer';
 import { UsuarioControllerService } from '../../Rest/api/usuarioController.service';
 import { Usuario } from 'src/app/Rest';
 import { Router } from '@angular/router';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
   styleUrls: ['./registrar.component.css']
+
 })
 export class RegistrarComponent implements OnInit {
   @ViewChild("video") video: ElementRef;
@@ -33,6 +35,8 @@ export class RegistrarComponent implements OnInit {
   urlImagen = null;
   imageRegistro: any;
 
+  visibleSidebar3 = false;
+
 
   albumBucketName = 'imagenes-usuarios';
 
@@ -45,7 +49,7 @@ export class RegistrarComponent implements OnInit {
 
 
 
-  constructor(private serviceUsuarui: UsuarioControllerService, private roueter:Router) {
+  constructor(private serviceUsuarui: UsuarioControllerService, private roueter: Router) {
     this.usuarios = {};
   }
 
@@ -56,6 +60,11 @@ export class RegistrarComponent implements OnInit {
       IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
     });
     this.usuarios = {};
+
+  }
+
+  mostrar() {
+    this.visibleSidebar3 = false;
   }
   public ngAfterViewInit() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -81,22 +90,19 @@ export class RegistrarComponent implements OnInit {
 
   }
 
-  refresh(){
-    this.roueter.navigate(['registrar-Usuario']);
-  }
-
   
+
 
   onClickSubir = async (event) => {
     this.imageRegistro = new Buffer(this.foto, 'base64');
-    if(this.usuarios.nombre){
+    if (this.usuarios.nombre) {
       var params = {
         TargetImage: {
           S3Object: {
             Bucket: "imagenes-usuarios",
             Name: this.usuarios.nombre + '.png'
           }
-  
+
         },
         SourceImage: {
           Bytes: new Buffer(this.foto, 'base64')
@@ -104,20 +110,21 @@ export class RegistrarComponent implements OnInit {
         SimilarityThreshold: 0
       };
       console.log(this.image);
-  
+
       this.detector = new AWS.Rekognition();
-  
-      this.detector.compareFaces(params, function (error, response) {
-  
+
+      this.detector.compareFaces(params, function (error, response,) {
+
         if (error) {
           console.log(error);
           console.log(params);
+
         } else {
           console.log(params);
-  
+
           response.FaceMatches.forEach(data => {
             console.log(data);
-  
+
             let position = data.Face.BoundingBox
             let similarity = data.Similarity
             let conficencial = data.Confidence
@@ -126,16 +133,16 @@ export class RegistrarComponent implements OnInit {
               location.reload();
             }
           });
-  
-  
+
+
         }
-      
-      })
-    }else{
+
+      });
+    } else {
       if (this.foto) {
         try {
           this.subiendo = true;
-          
+
           const data = await new AWS.S3.ManagedUpload({
             params: {
               Bucket: this.albumBucketName,
@@ -144,9 +151,7 @@ export class RegistrarComponent implements OnInit {
               ACL: 'public-read',
             },
           }).promise();
-          alert('se a guardado la foto correctamente')
           this.usuarios.foto = data.Location;
-          this.guardar();
           this.subiendo = false;
           this.showImagen = true;
         } catch (error) {
@@ -160,69 +165,60 @@ export class RegistrarComponent implements OnInit {
         alert('SELECCIONE UN ARCHIVO');
       }
     }
-  
+
 
   }
-  
+
 
   guardar() {
 
     this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data => {
+     console.log(data);
       alert('Se a registrado correctamente');
-      console.log(data)
-    }, (err)=>{
+      location.reload();
+    }, (err) => {
+      console.log(err);
       console.log("los datos estan duplicados");
       alert(`este nombre de ususario ya existe pruebe con ${this.usuarios.nombre}11`);
-      location.reload();
+      
     });
   }
 
 
 
-  public comparar() {
-    var params = {
-      TargetImage: {
-        S3Object: {
-          Bucket: "imagenes-usuarios",
-          Name: this.usuarios.nombre + '.png'
-        }
+  onClickSubir1 = async (event) => {
+    this.imageRegistro = new Buffer(this.foto, 'base64');
+    if (this.foto) {
+      try {
+        this.subiendo = true;
 
-      },
-      SourceImage: {
-        Bytes: new Buffer(this.foto, 'base64')
-      },
-      SimilarityThreshold: 0
-    };
-    console.log(this.image);
-
-    this.detector = new AWS.Rekognition();
-
-    this.detector.compareFaces(params, function (error, response) {
-
-      if (error) {
-        console.log(error);
-        console.log(params);
-      } else {
-        console.log(params);
-
-        response.FaceMatches.forEach(data => {
-          console.log(data);
-
-          let position = data.Face.BoundingBox
-          let similarity = data.Similarity
-          let conficencial = data.Confidence
-          if (similarity > 95) {
-            alert(`Este usuario ya se encuentra registrado`);
-            location.reload();
-          }
-        });
-
-
+        const data = await new AWS.S3.ManagedUpload({
+          params: {
+            Bucket: this.albumBucketName,
+            Key: this.usuarios.nombre + '.png',
+            Body: this.imageRegistro,
+            ACL: 'public-read',
+          },
+        }).promise();
+        this.usuarios.foto = data.Location;
+        this.guardar();
+        this.subiendo = false;
+        this.showImagen = true;
+      } catch (error) {
+        this.error = true;
+        const bucle = setInterval(() => {
+          this.error = false;
+          clearInterval(bucle);
+        }, 2000);
       }
+    } else {
+      alert('SELECCIONE UN ARCHIVO');
+    }
     
-    })
-   
+
+
   }
+
 
 
 }
