@@ -100,15 +100,16 @@ export class RegisterShoesComponent implements OnInit {
       alert('SELECCIONE UN ARCHIVO');
     }
 
-   
   };
 
   onChange = (event) => {
     if (event.target.files.length > 0) {
       this.archivo = event.target.files[0];
+      console.log(this.archivo)
     }
-  };
+  }
 
+  
   guardar() {
     this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
       console.log(this.shoes);
