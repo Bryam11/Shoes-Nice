@@ -11,9 +11,12 @@ export class HomeComponent implements OnInit {
   UsuarioInterface: any;
   ShoesInterface: any;
   Shoes = new Array<Shoes>();
+  
 
 
-  constructor(private router: Router, private shoesService: ShoesControllerService) { }
+
+  constructor(private router: Router, private shoesService: ShoesControllerService) {}
+
 
 
   ngOnInit(): void {

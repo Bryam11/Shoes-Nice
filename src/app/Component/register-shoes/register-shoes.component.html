@@ -1,5 +1,5 @@
 <Body>
-    
+
     <h1 style="text-align: center;"><span style="color: #003366;">INGRESO DE ZAPATOS</span></h1>
 
 
@@ -7,7 +7,7 @@
     <div class="visorbanner">
         <div id="content">
             <br>
-            
+
 
 
             <span class="ui-float-label">
@@ -27,7 +27,7 @@
                         <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
                     </div>
                 </ng-template>
-              
+
             </p-dropdown>
             <br>
 
@@ -45,7 +45,6 @@
                     size="30" [(ngModel)]="shoes.talla" pInputText>
                 <label style="color: #003366;" for="float-input"> <strong>Talla</strong> </label>
             </span>
-
 
 
             <form>
@@ -66,8 +65,12 @@
                 <h4 *ngIf="subiendo">Subiendo imagen {{archivo.name}}</h4>
                 <br />
                 <br />
+
           <br>
                 <button  type="button"  style="display: block; margin-left: 145px; margin-right: auto;color: #ffffff;" pButton type="button" label="Comparar"  label="Guardar" class="ui-button-rounded ui-button-secundary" (click)="onClickSubir($event)"></button>
+
+                <button pButton type="button" style="display: block; margin-left: 145px; margin-right: auto;color: #000000;" pButton type="button" label="Comparar" label="Guardar" class="ui-button-raised ui-button-secondary" (click)="onClickSubir($event)"></button>
+
             </form>
 
             <!-- <div class="" *ngIf="showImagen" style="width: 700px;">

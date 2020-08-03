@@ -8,14 +8,18 @@
                 <div id="miCameraOnline">
                     <video #video id="video" width="300" height="240" autoplay class="center"></video>
                     <h2 style="text-align: center;"><span style="color: #ffffff;">Nombre de Usuario</span></h2>
-                    <input style="margin-left: 112px; margin-right: auto;" type="text" pInputText pTooltip="Ingrese your username" placeholder="Right" tooltipEvent="focus" [(ngModel)]="usuarios.nombre">
+                    <input style="margin-left: 112px; margin-right: auto;" type="text" pInputText pTooltip="Ingrese your username" placeholder="User Name" tooltipEvent="focus" [(ngModel)]="usuarios.nombre">
 
 
                     <h2 style="display: block; margin-left: 115px; margin-right: auto;"><span style="color: #ffffff;">Capturar rostro</span></h2>
 
                     <button (click)="capturar()" style="display: block; margin-left: 175px; margin-right: auto;" pButton type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
                     <br>
-                    <button (click)="onClickSubir($event)" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
+
+
+                    <button (click)="onClickSubir($event); visibleSidebar3= true" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
+                    <br>
+
 
 
                 </div>
@@ -46,5 +50,10 @@
     <br>
     <br>
     <br>
-    
+    <p-sidebar [(visible)]="visibleSidebar3" position="top" [baseZIndex]="10000">
+        <h1 style="text-align: center;"><span style="color: #008000;"><strong>PUEDE INGRESAR ESTE USUARIO</strong></span></h1>
+        <p-splitButton (click)="onClickSubir1($event)" label="Guardar Usuario" icon="pi pi-plus"></p-splitButton>
+
+    </p-sidebar>
+
 </body>

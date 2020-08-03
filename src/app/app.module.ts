@@ -17,10 +17,11 @@ import { TableModule } from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
 import { SplitButtonModule} from 'primeng/splitbutton';
 import { MegaMenuModule } from 'primeng/megamenu';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UsuarioControllerService } from './Rest/api/usuarioController.service';
 import { ShoesControllerService } from './Rest/api/shoesController.service';
 import { RegisterShoesComponent } from './Component/register-shoes/register-shoes.component';
+
 import {DropdownModule} from 'primeng/dropdown';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FileUploadModule} from 'primeng/fileupload';
@@ -28,6 +29,9 @@ import {TooltipModule} from 'primeng/tooltip';
 import {GalleriaModule} from 'primeng/galleria';
 import {CardModule} from 'primeng/card';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
+
+
 
 @NgModule({
   declarations: [
@@ -51,15 +55,17 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     CarouselModule,
     DropdownModule,
     BrowserAnimationsModule,
-    FileUploadModule,  
+    FileUploadModule,
     TooltipModule,
     GalleriaModule,
     CardModule,
     SplitButtonModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    SplitButtonModule
+
 
   ],
-  providers: [UsuarioControllerService,ShoesControllerService],
+  providers: [UsuarioControllerService, ShoesControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

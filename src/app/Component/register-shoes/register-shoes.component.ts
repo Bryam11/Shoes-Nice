@@ -15,6 +15,8 @@ export class RegisterShoesComponent implements OnInit {
   selectedCar2: string = 'BMW';
   item: string;
 
+  
+
   foto: any;
   detector: any;
   image: any;
@@ -62,6 +64,7 @@ export class RegisterShoesComponent implements OnInit {
       { label: 'Vans', value: 'VANS' },
     ];
   }
+
 
   ngOnInit(): void {
   }
