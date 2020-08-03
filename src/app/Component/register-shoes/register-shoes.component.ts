@@ -96,6 +96,7 @@ export class RegisterShoesComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
+
   };
 
   onChange = (event) => {

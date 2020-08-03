@@ -10,17 +10,19 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
+import { Inject, Injectable, Optional } from '@angular/core';
+import {
+    HttpClient, HttpHeaders, HttpParams,
+    HttpResponse, HttpEvent
+} from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec } from '../encoder';
 
-import { Observable }                                        from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Usuario } from '../model/usuario';
 
-import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
-import { Configuration }                                     from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
+import { Configuration } from '../configuration';
 
 
 @Injectable()
@@ -30,7 +32,7 @@ export class UsuarioControllerService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -65,7 +67,7 @@ export class UsuarioControllerService {
     public createUserUsingPOST(body: Usuario, observe?: 'body', reportProgress?: boolean): Observable<Usuario>;
     public createUserUsingPOST(body: Usuario, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Usuario>>;
     public createUserUsingPOST(body: Usuario, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Usuario>>;
-    public createUserUsingPOST(body: Usuario, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUserUsingPOST(body: Usuario, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUserUsingPOST.');
@@ -91,7 +93,7 @@ export class UsuarioControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Usuario>('post',`${this.basePath}/User/user`,
+        return this.httpClient.request<Usuario>('post', `${this.basePath}/User/user`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -112,7 +114,7 @@ export class UsuarioControllerService {
     public eliminarUsingDELETE1(userid: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
     public eliminarUsingDELETE1(userid: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
     public eliminarUsingDELETE1(userid: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public eliminarUsingDELETE1(userid: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public eliminarUsingDELETE1(userid: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
         if (userid === null || userid === undefined) {
             throw new Error('Required parameter userid was null or undefined when calling eliminarUsingDELETE1.');
@@ -132,7 +134,7 @@ export class UsuarioControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/User/${encodeURIComponent(String(userid))}`,
+        return this.httpClient.request<any>('delete', `${this.basePath}/User/${encodeURIComponent(String(userid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -152,10 +154,10 @@ export class UsuarioControllerService {
     public getUsuariosbyNombreUsingGET(nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Usuario>>;
     public getUsuariosbyNombreUsingGET(nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Usuario>>>;
     public getUsuariosbyNombreUsingGET(nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Usuario>>>;
-    public getUsuariosbyNombreUsingGET(nombre?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUsuariosbyNombreUsingGET(nombre?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
         if (nombre !== undefined && nombre !== null) {
             queryParameters = queryParameters.set('nombre', <any>nombre);
         }
@@ -175,7 +177,7 @@ export class UsuarioControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Usuario>>('get',`${this.basePath}/User/shoes/${encodeURIComponent(String(nombre))}`,
+        return this.httpClient.request<Array<Usuario>>('get', `${this.basePath}/User/shoes/${encodeURIComponent(String(nombre))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -195,7 +197,7 @@ export class UsuarioControllerService {
     public getallShoesUsingGET1(observe?: 'body', reportProgress?: boolean): Observable<Array<Usuario>>;
     public getallShoesUsingGET1(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Usuario>>>;
     public getallShoesUsingGET1(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Usuario>>>;
-    public getallShoesUsingGET1(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getallShoesUsingGET1(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -212,7 +214,7 @@ export class UsuarioControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Usuario>>('get',`${this.basePath}/User/user`,
+        return this.httpClient.request<Array<Usuario>>('get', `${this.basePath}/User/user`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
