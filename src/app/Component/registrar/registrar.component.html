@@ -14,14 +14,9 @@
                     <h2 style="display: block; margin-left: 115px; margin-right: auto;"><span style="color: #ffffff;">Capturar rostro</span></h2>
 
                     <button (click)="capturar()" style="display: block; margin-left: 175px; margin-right: auto;" pButton type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
-                    <br>
-
-                    
+                    <br>    
                     <button (click)="onClickSubir($event); visibleSidebar3= true; blockedPanel=true" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
                     <br>
-
-
-
                 </div>
             </div>
 
@@ -50,7 +45,7 @@
     <br>
     <br>
     <br>
-    
+
     <p-blockUI [target]="pnl" [blocked]="blockedPanel">
         <i class="pi pi-lock" style="position:absolute;top:35%;left:50%;font-size: 60px;font-weight: bold;"></i>
     </p-blockUI>
@@ -62,7 +57,12 @@
          
         </p-sidebar>
     </p-panel>
-    
-   
+
+
+    <p-sidebar [(visible)]="visibleSidebar3" position="top" [baseZIndex]="10000">
+        <h1 style="text-align: center;"><span style="color: #008000;"><strong>PUEDE INGRESAR ESTE USUARIO</strong></span></h1>
+        <p-splitButton id="ventana" (click)="onClickSubir1($event)" label="Guardar Usuario" icon="pi pi-plus"></p-splitButton>
+
+    </p-sidebar>
 
 </body>
