@@ -4,7 +4,7 @@ import { Buffer } from 'buffer';
 import { UsuarioControllerService } from '../../Rest/api/usuarioController.service';
 import { Usuario } from 'src/app/Rest';
 import { Router } from '@angular/router';
-import { SidebarModule } from 'primeng/sidebar';
+
 
 
 
@@ -38,6 +38,7 @@ export class RegistrarComponent implements OnInit {
   visibleSidebar3 = false;
 
 
+
   albumBucketName = 'imagenes-usuarios';
 
   s3 = new AWS.S3({
@@ -63,9 +64,7 @@ export class RegistrarComponent implements OnInit {
 
   }
 
-  mostrar() {
-    this.visibleSidebar3 = false;
-  }
+ 
   public ngAfterViewInit() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true }).then(screenStream => {
@@ -90,10 +89,11 @@ export class RegistrarComponent implements OnInit {
 
   }
 
-  
+
 
 
   onClickSubir = async (event) => {
+    
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.usuarios.nombre) {
       var params = {
@@ -118,7 +118,9 @@ export class RegistrarComponent implements OnInit {
         if (error) {
           console.log(error);
           console.log(params);
-
+          const btnEnviar = document.getElementById('ventana');
+          (document.getElementById('ventana') as any).disabled = true;
+          //btnEnviar.disabled=true;
         } else {
           console.log(params);
 
@@ -173,14 +175,14 @@ export class RegistrarComponent implements OnInit {
   guardar() {
 
     this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data => {
-     console.log(data);
+      console.log(data);
       alert('Se a registrado correctamente');
       location.reload();
     }, (err) => {
       console.log(err);
       console.log("los datos estan duplicados");
       alert(`este nombre de ususario ya existe pruebe con ${this.usuarios.nombre}11`);
-      
+
     });
   }
 
@@ -214,7 +216,7 @@ export class RegistrarComponent implements OnInit {
     } else {
       alert('SELECCIONE UN ARCHIVO');
     }
-    
+
 
 
   }

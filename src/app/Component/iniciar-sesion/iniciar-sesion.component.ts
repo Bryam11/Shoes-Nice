@@ -84,6 +84,7 @@ export class IniciarSesionComponent implements OnInit {
         console.log(error);
         console.log(params);
         alert('Revisebien su nombre de usuario o su foto ');
+      
       } else {
         console.log(params);
 
