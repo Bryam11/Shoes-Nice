@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import * as AWS from 'aws-sdk';
 import { Shoes } from '../../Rest/model/shoes';
@@ -10,6 +10,7 @@ import { ShoesControllerService } from '../../Rest/api/shoesController.service';
   styleUrls: ['./register-shoes.component.css']
 })
 export class RegisterShoesComponent implements OnInit {
+
   cars: SelectItem[];
   selectedCar2: string = 'BMW';
   item: string;
@@ -29,9 +30,8 @@ export class RegisterShoesComponent implements OnInit {
   showImagen = false;
   error = false;
   subiendo = false;
-  archivo: any;
+ archivo: any;
   urlImagen = null;
-  uploadedFiles: any[] = [];
   messageService: any;
 
   shoes: Shoes = {
@@ -116,4 +116,5 @@ export class RegisterShoesComponent implements OnInit {
       window.alert('se ha guardado el usuario exitosamente');
     });
   }
+
 }
