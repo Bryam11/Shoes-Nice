@@ -1,6 +1,7 @@
 body {
     background-image: url(../../../assets/Imagenes/fondoshoes.jpg);
-    background-size: 1100px 1950px;
+    width: 100%;
+  
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -26,7 +27,8 @@ body {
     position: relative;
     /*tambien puede ser absolute si se quiere*/
     top: 0px;
-    left: 625px;
+    margin-left: auto;
+    margin-right: auto;
     width:400px;
     height: 480px;
     background-color: rgb(204, 229, 245);

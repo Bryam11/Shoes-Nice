@@ -1,12 +1,14 @@
 body {
     background-image: url(https://i.pinimg.com/originals/70/b7/07/70b707af0636cd023128d399c7a266f1.gif);
-    background-size: 1100px 1830px;
+    width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
-
+:host ::ng-deep button {
+    margin-right: 0.25em;
+}
 #content {
     overflow: auto;
     width: 150%;
@@ -21,7 +23,7 @@ body {
 #left{
     width:36%;
     margin:5px;
-    padding: 2em;
+    padding: 1em;
     background: rgba(18, 1, 65, 0.986)y; 
 }
 
@@ -46,7 +48,7 @@ button.btn {
     float: left;
 }
 
-#right {
+#right1 {
     float: right;
 }
 

@@ -10,18 +10,18 @@ import { ShoesControllerService, Shoes } from 'src/app/Rest';
 })
 
 export class CatalogoComponent implements OnInit {
+  // DECLARACIONES DE VARIABLES
   inicio: String = '';
   marca: string;
   items: MegaMenuItem[];
   shoes = new Array<Shoes>();
   cars: SelectItem[];
   selectedCar: string = 'Ninguna';
-
   zapa: Shoes[];
   responsiveOptions;
-  
   title = 'consumo';
 
+  // CONSTRUCTOR
   constructor(private shoesService: ShoesControllerService) {
     this.responsiveOptions = [
       {
@@ -50,11 +50,12 @@ export class CatalogoComponent implements OnInit {
     ];
   }
 
-
+// METODO INICIAL
   ngOnInit() {
     this.allShoes()
   }
 
+  // METODO PARA LLAMAR LA LISTA DE ZAPATOS CON SUS ATRIBUTOS
   allShoes() {
     this.shoesService.getallShoesUsingGET().subscribe(data => {
       this.shoes = data;
@@ -64,7 +65,7 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
-
+// METODO PARA BUSCAR ZAPATO POR MARCA
   buscarPorMarca() {
     this.shoesService.getShoesByMarcaUsingGET(this.selectedCar).subscribe(data => {
       this.shoes = data;

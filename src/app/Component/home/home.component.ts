@@ -8,33 +8,9 @@ import { ShoesControllerService, Shoes } from 'src/app/Rest';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  UsuarioInterface: any;
-  ShoesInterface: any;
-  Shoes = new Array<Shoes>();
-  
 
-
-
-  constructor(private router: Router, private shoesService: ShoesControllerService) {}
-
-
-
+ //METOD INICIAR
   ngOnInit(): void {
-  this.getshoes();
   }
-  
-iniciarsesioc(){
-  this.router.navigate(['Iniciar-sesion']);
-}
- getshoes(){
-
-  this.shoesService.getallShoesUsingGET().subscribe(
-    data => {
-      this.Shoes = data;
-      
-      console.log(data);
-      });
-
-}
 
 }

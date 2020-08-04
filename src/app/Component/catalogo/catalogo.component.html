@@ -1,13 +1,13 @@
 <body>
-
     <br>
-
+    <!-- TITUTO GENERAL -->
     <h1 style="text-align: center;"><span style="color: #000000;"><strong>CATALOGO DE ZAPATOS DEPORTIVOS</strong></span></h1>
-
+   
+   <!-- PONER UN COMONENTE ENCIMA DE OTRO -->
     <div class="visorbanner">
         <div id="content">
 
-
+            <!-- PONER COMPONENTES AL LADO IZQUIERDO -->
             <div id="left">
                 <!--p-carousel [value]="zapa" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
                     <br>
@@ -32,6 +32,8 @@
 
                     </ng-template>
                 </p-carousel-->
+
+                <!-- CARRUCEL CON LA LISTA DE ZAPATOS -->
                 <p-galleria [(value)]="zapa" [responsiveOptions]="responsiveOptions" [containerStyle]="{}" [numVisible]="3" width="440" height="740">
                     <ng-template pTemplate="item" let-shoes>
                         <img src="{{shoes.url}}" width="700" height="700" />
@@ -46,12 +48,9 @@
                         <p>{{shoes.shoesColor}}</p>
                     </ng-template>
                 </p-galleria>
-
-
-
             </div>
 
-
+<!-- PONER TODOS LOS COMPONENTES AL LADO DERECHO -->
             <div id="right">
                 <h3>🔎Buscar Por Marcas🔍</h3>
                 <p-listbox [options]="cars" [(ngModel)]="selectedCar" [listStyle]="{'max-height':'250px'}">
@@ -63,14 +62,8 @@
                     </ng-template>
 
                 </p-listbox>
-
-
                 <p-button (click)="buscarPorMarca()" label="Buscar" styleClass="ui-button-primary"></p-button>
             </div>
-
-
-
-
         </div>
     </div>
 

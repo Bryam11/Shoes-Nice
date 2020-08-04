@@ -7,8 +7,11 @@ import { MegaMenuItem } from 'primeng/api/megamenuitem';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // DECLARACIONES DE VARIABLES
   title = 'Shoes-Nice';
   items: MegaMenuItem[];
+
+  // METODO QUE INICIA CON EL MEGAMENU
   ngOnInit() {
     this.items = [
       {

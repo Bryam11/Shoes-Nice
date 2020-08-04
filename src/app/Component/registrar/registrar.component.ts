@@ -36,6 +36,7 @@ export class RegistrarComponent implements OnInit {
   imageRegistro: any;
 
   visibleSidebar3 = false;
+  blockedPanel: boolean = false;
 
 
   albumBucketName = 'imagenes-usuarios';
@@ -76,7 +77,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   public capturar() {
-    this.cargando = true;
+    
     this.nombreEmocion = null;
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 600, 440);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
@@ -87,13 +88,13 @@ export class RegistrarComponent implements OnInit {
       },
 
     }
-
   }
 
   
 
 
   onClickSubir = async (event) => {
+    this.cargando = true;
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.usuarios.nombre) {
       var params = {
@@ -118,7 +119,7 @@ export class RegistrarComponent implements OnInit {
         if (error) {
           console.log(error);
           console.log(params);
-
+          alert('Ingrese bien los datos');
         } else {
           console.log(params);
 
@@ -165,8 +166,8 @@ export class RegistrarComponent implements OnInit {
         alert('SELECCIONE UN ARCHIVO');
       }
     }
-
-
+    
+    this.blockedPanel=false;
   }
 
 

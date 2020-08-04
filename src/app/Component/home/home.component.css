@@ -1,12 +1,14 @@
+/* ESTILO DEL BODY */
 body {
-    background-image: url(../../../assets/Imagenes/aesthetic-pink-and-green-wallpaper-ios.jpg);
-    background-size: 1100px 1950px;
+    background-image: url(https://ak.picdn.net/shutterstock/videos/9635432/thumb/1.jpg);
+    width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
+/* SEPARACION DEL MARGEN */
 :host ::ng-deep button {
     margin-right: 0.25em;
 }

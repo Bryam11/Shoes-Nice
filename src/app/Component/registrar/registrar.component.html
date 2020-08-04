@@ -16,8 +16,8 @@
                     <button (click)="capturar()" style="display: block; margin-left: 175px; margin-right: auto;" pButton type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
                     <br>
 
-
-                    <button (click)="onClickSubir($event); visibleSidebar3= true" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
+                    
+                    <button (click)="onClickSubir($event); visibleSidebar3= true; blockedPanel=true" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
                     <br>
 
 
@@ -29,17 +29,17 @@
                 <div>
                     <br>
                     <br>
-                    <blockquote>
-                        
+                    <blockquote>   
                         <h1 style="color: #ffffff;text-align: center;">Aqui visualizara su foto xd uWu<img src="https://html-online.com/editor/tinymce4_6_5/plugins/emoticons/img/smiley-cool.gif" alt="cool" /></h1>
-                        
                     </blockquote>
-                    <p-progressSpinner [style]="{width: '50px', height: '50px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+               
                     <canvas #canvas id="canvas" width="640" height="480" class="center"></canvas>
                 </div>
 
             </div>
 
+     
+           
 
 
 
@@ -50,10 +50,19 @@
     <br>
     <br>
     <br>
-    <p-sidebar [(visible)]="visibleSidebar3" position="top" [baseZIndex]="10000">
-        <h1 style="text-align: center;"><span style="color: #008000;"><strong>PUEDE INGRESAR ESTE USUARIO</strong></span></h1>
-        <p-splitButton (click)="onClickSubir1($event)" label="Guardar Usuario" icon="pi pi-plus"></p-splitButton>
-
-    </p-sidebar>
+    
+    <p-blockUI [target]="pnl" [blocked]="blockedPanel">
+        <i class="pi pi-lock" style="position:absolute;top:35%;left:50%;font-size: 60px;font-weight: bold;"></i>
+    </p-blockUI>
+    <p-panel #pnl >
+        <p-sidebar [(visible)]="visibleSidebar3" position="top" [baseZIndex]="10000">
+            <h1 style="text-align: center;"><span style="color: #008000;"><strong>PUEDE INGRESAR ESTE USUARIO</strong></span></h1>
+            <p-splitButton (click)="onClickSubir1($event)" label="Guardar Usuario" icon="pi pi-plus">       
+            </p-splitButton>
+         
+        </p-sidebar>
+    </p-panel>
+    
+   
 
 </body>

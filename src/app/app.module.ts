@@ -29,7 +29,9 @@ import {TooltipModule} from 'primeng/tooltip';
 import {GalleriaModule} from 'primeng/galleria';
 import {CardModule} from 'primeng/card';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
+import { SidebarModule } from 'primeng/sidebar';
+import {BlockUIModule} from 'primeng/blockui';
+import {PanelModule} from 'primeng/panel';
 
 
 
@@ -61,7 +63,10 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     CardModule,
     SplitButtonModule,
     ProgressSpinnerModule,
-    SplitButtonModule
+    SidebarModule,
+    SplitButtonModule,
+    BlockUIModule,
+    PanelModule
 
 
   ],
