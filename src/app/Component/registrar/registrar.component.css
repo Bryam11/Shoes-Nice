@@ -111,6 +111,6 @@ a.btnAzul {
 }
 
  :host ::ng-deep button {
-    margin-left: 700px;
+    margin-left: 900px;
     margin-right: 0.25em;
 }
