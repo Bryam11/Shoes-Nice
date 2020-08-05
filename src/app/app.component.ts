@@ -14,7 +14,7 @@ export class AppComponent {
   constructor( private roueter: Router) {}
   // METODO QUE INICIA CON EL MEGAMENU
   ngOnInit() {
-    this.roueter.navigate(['Home']);
+    
     this.items = [
       {
           label: '🙍🏻‍♂️USUARIOS',
