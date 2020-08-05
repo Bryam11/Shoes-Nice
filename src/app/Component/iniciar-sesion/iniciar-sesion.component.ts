@@ -15,13 +15,6 @@ export class IniciarSesionComponent implements OnInit {
   foto: any;
   detector: any;
   image: any;
-  maxConfidence: any;
-  nombreEmocion: any;
-  cargando = null;
-  //bucket        = 'bucket' // the bucketname without s3://
-  foto_origen = 'source.jpg'
-  client: any;
-  response: any
   nombre: string;
 
 
@@ -34,6 +27,8 @@ export class IniciarSesionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  // metodo para hacer uso de la camara web
   public ngAfterViewInit() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true }).then(screenStream => {
@@ -43,9 +38,8 @@ export class IniciarSesionComponent implements OnInit {
     }
   }
 
+  //metodo para capturar la imagen
   public capturar() {
-    this.cargando = true;
-    this.nombreEmocion = null;
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 600, 440);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
     this.foto = this.foto.split(",")[1];
@@ -59,7 +53,7 @@ export class IniciarSesionComponent implements OnInit {
   }
 
 
-
+// metodo que compara la similitud
   public comparar() {
     var params = {
       TargetImage: {
@@ -84,7 +78,7 @@ export class IniciarSesionComponent implements OnInit {
         console.log(error);
         console.log(params);
         alert('Revisebien su nombre de usuario o su foto ');
-      
+
       } else {
         console.log(params);
 
@@ -96,23 +90,16 @@ export class IniciarSesionComponent implements OnInit {
           let conficencial = data.Confidence
           alert(`El paresido entre las dos fotos es de ${similarity}%`);
           if (similarity > 95) {
-
-            
-
             alert(`puede iniciar secion ${similarity}%`);
-          //window.open('http://localhost:4200/ver-catalogo','_self','"width=620,height=1000')
-          window.open('ver-catalogo','_self','"width=620,height=1000')
+            window.open('ver-catalogo', '_self', 'width=620,height=1000')
           } else {
             alert(`No Puede iniciar sesion`);
-          //  location.reload();
           }
         });
-
-
       }
-    
-    })
-   
+
+    });
+
   }
 
 

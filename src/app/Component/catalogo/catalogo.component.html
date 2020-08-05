@@ -1,42 +1,20 @@
 <body>
     <br>
+
     <!-- TITUTO GENERAL -->
-    <h1 style="text-align: center;"><span style="color: #000000;"><strong>CATALOGO DE ZAPATOS DEPORTIVOS</strong></span></h1>
-   
-   <!-- PONER UN COMONENTE ENCIMA DE OTRO -->
+    <h1 style="text-align: center;"><span style="color: #ffffff;"><strong>CATALOGO DE ZAPATOS DEPORTIVOS</strong></span></h1>
+
+    <!-- PONER UN COMONENTE ENCIMA DE OTRO -->
     <div class="visorbanner">
         <div id="content">
 
             <!-- PONER COMPONENTES AL LADO IZQUIERDO -->
             <div id="left">
-                <!--p-carousel [value]="zapa" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-                    <br>
-                    <br>
-                    <ng-template let-zap pTemplate="item">
-
-                        <div class="zap-details">
-                            <div class="p-grid p-nogutter">
-
-                                <div class="p-col-12">
-                                    <img src="{{zap.url}}" width="150" height="130" />
-                                </div>
-                                <div class="p-col-12 car-data">
-
-                                    <div class="zap-title">{{zap.shoesMarca}}</div>
-                                    <div class="zap-subtitle">{{zap.shoesColor}}</div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </ng-template>
-                </p-carousel-->
 
                 <!-- CARRUCEL CON LA LISTA DE ZAPATOS -->
-                <p-galleria [(value)]="zapa" [responsiveOptions]="responsiveOptions" [containerStyle]="{}" [numVisible]="3" width="440" height="740">
+                <p-galleria [(value)]="zapa" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '769px'}" [numVisible]="3">
                     <ng-template pTemplate="item" let-shoes>
-                        <img src="{{shoes.url}}" width="700" height="700" />
+                        <img src="{{shoes.url}}" style="width: 100%;height: 700px;" />
                     </ng-template>
                     <ng-template pTemplate="thumbnail" let-shoes>
                         <div class="p-grid p-nogutter p-justify-center">
@@ -45,24 +23,29 @@
                     </ng-template>
                     <ng-template pTemplate="caption" let-shoes>
                         <h4 style="margin-bottom: .5rem; color: #ffffff;">{{shoes.shoesMarca}}</h4>
+                        <p>{{shoes.shoesModelo}}</p>
                         <p>{{shoes.shoesColor}}</p>
+
                     </ng-template>
                 </p-galleria>
             </div>
 
-<!-- PONER TODOS LOS COMPONENTES AL LADO DERECHO -->
+            <!-- PONER TODOS LOS COMPONENTES AL LADO DERECHO -->
             <div id="right">
-                <h3>🔎Buscar Por Marcas🔍</h3>
-                <p-listbox [options]="cars" [(ngModel)]="selectedCar" [listStyle]="{'max-height':'250px'}">
-                    <ng-template let-car pTemplate="item">
+                <h3 style="color: #ffffff;margin-right:300px;">🔎Buscar Marcas🔍 </h3>
+                <p-listbox [options]="zapatos" [(ngModel)]="selectedshoes" [listStyle]="{'max-height':'250px'}" style="margin-right: 10px;">
+                    <ng-template let-shoes pTemplate="item">
                         <div class="ui-helper-clearfix">
-                            <img src="../../../assets/Imagenes/{{car.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="48">
-                            <span style="float:right;margin:20px 10px 0 0">{{car.value}}</span>
+                            <img src="../../../assets/Imagenes/{{shoes.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="48">
+                            <span style="float:right;margin:20px 10px 0 0">{{shoes.value}}</span>
                         </div>
                     </ng-template>
 
                 </p-listbox>
-                <p-button (click)="buscarPorMarca()" label="Buscar" styleClass="ui-button-primary"></p-button>
+                <br>
+
+
+                <p-button (click)="buscarPorMarca()" label="Buscar" style="margin-right: auto; margin-left: auto; display:inline-block;margin:5px 0 0 5px" styleClass="ui-button-primary"></p-button>
             </div>
         </div>
     </div>

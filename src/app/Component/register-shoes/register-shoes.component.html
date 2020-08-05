@@ -1,10 +1,12 @@
 <Body>
+    <br>
+    <br>
 
-    <h1 style="text-align: center;"><span style="color: #003366;">INGRESO DE ZAPATOS</span></h1>
+    <h1 style="text-align: center;"><span style="color: rgb(204, 229, 245)">INGRESO DE ZAPATOS</span></h1>
 
 
 
-    <div class="visorbanner" >
+    <div class="visorbanner">
         <div id="content">
             <br>
 
@@ -13,10 +15,10 @@
             <span class="ui-float-label">
                 <input style="display: block; margin-left: auto; margin-right: auto;" id="float-input" type="text"
                     size="30" [(ngModel)]="shoes.shoesColor"pInputText>
-                <label style="color: #003366;" for="float-input"> <strong>Color</strong> </label>
+                <label style="color:rgb(204, 229, 245)" for="float-input"> <strong>Color</strong> </label>
             </span>
-            <h3 style="color: #003366;">Elija la marca </h3>
-            <p-dropdown [options]="cars" [(ngModel)]="shoes.shoesMarca" filter="true" style="display: block; margin-left: 112px; margin-right: auto;">
+            <h3 style="color: rgb(204, 229, 245)">Elija la marca </h3>
+            <p-dropdown [options]="zapatos" [(ngModel)]="shoes.shoesMarca" filter="true" style="display: block; margin-left: 112px; margin-right: auto;">
                 <ng-template let-item pTemplate="selectedItem">
                     <!--img src="assets/showcase/images/demo/car/{{item.label}}.png" style="width:16px;vertical-align:middle" /-->
                     <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
@@ -35,7 +37,7 @@
             <span class="ui-float-label">
                 <input style="display: block; margin-left: auto; margin-right: auto;" id="float-input" type="text"
                     size="30" [(ngModel)]="shoes.shoesModelo" pInputText>
-                <label style="color: #003366;" for="float-input"> <strong>Modelo</strong></label>
+                <label style="color: rgb(204, 229, 245)" for="float-input"> <strong>Modelo</strong></label>
             </span>
             <br>
 
@@ -43,28 +45,28 @@
             <span class="ui-float-label">
                 <input style="display: block; margin-left: auto; margin-right: auto;" id="float-input" type="text"
                     size="30" [(ngModel)]="shoes.talla" pInputText>
-                <label style="color: #003366;" for="float-input"> <strong>Talla</strong> </label>
+                <label style="color: rgb(204, 229, 245)" for="float-input"> <strong>Talla</strong> </label>
             </span>
 
 
             <form>
-                
+
                 <div class="fileinputs">
-                    <h3 style="display: block; margin-left: 125px; margin-right: auto;"><span style="color: #003366;"><strong>Cargar imagen</strong></span></h3>
+                    <h3 style="display: block; margin-left: 125px; margin-right: auto;"><span style="color: rgb(204, 229, 245)"><strong>Cargar imagen</strong></span></h3>
                     <br>
-                    <input name="archivo" size="0px" (change)="onChange($event)"  type="file" class="file" />
+                    <input name="archivo" size="0px" (change)="onChange($event)" type="file" class="file" />
                     <br>
                     <br>
                     <div class="fakefile">
                         <br>
                         <br>
-                        <img src="https://image.flaticon.com/icons/png/512/25/25278.png" width="65" height="65" style="display: block; margin-left: 155px; margin-right: auto;color: #000000;"/>
-                        
+                        <img src="https://cdn.pixabay.com/photo/2017/06/13/12/52/upload-2398771_960_720.png" width="65" height="65" style="display: block; margin-left: 155px; margin-right: auto;color: #000000;" />
+
                     </div>
                 </div>
                 <h4 *ngIf="subiendo">Subiendo imagen {{archivo.name}}</h4>
-              <br>
-                <button  type="button"  style="display: block; margin-left: 145px; margin-right: auto;color: #ffffff;" pButton type="button" label="Comparar"  label="Guardar" class="ui-button-rounded ui-button-secundary" (click)="onClickSubir($event)"></button>
+                <br>
+                <button type="button" style="display: block; margin-left: 145px; margin-right: auto;color: rgb(204, 229, 245)" pButton type="button" label="Comparar" label="Guardar" class="ui-button-rounded ui-button-secundary" (click)="onClickSubir($event)"></button>
             </form>
 
             <!-- <div class="" *ngIf="showImagen" style="width: 700px;">
@@ -81,4 +83,4 @@
 
         </div>
     </div>
-   </Body>
+</Body>

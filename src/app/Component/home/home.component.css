@@ -1,14 +1,18 @@
 /* ESTILO DEL BODY */
+
 body {
-    background-image: url(https://www.oohlatam.com/wp-content/uploads/2020/01/Este-libro-te-ense%C3%B1ar%C3%A1-c%C3%B3mo-colocar-tu-publicidad-exterior-en-el-lugar-correcto.jpg);
+    background-image: url(https://live.staticflickr.com/5660/30296397615_691d438b1e_b.jpg?fbclid=IwAR3sEpLvMPN_0XIkWle98BY7JHr3G4-raX4G1TXDpghlRNGKNbTKdoXcRk8);
     width: 100%;
+    height: 1000px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
+
 /* SEPARACION DEL MARGEN */
+
 :host ::ng-deep button {
     margin-right: 0.25em;
 }

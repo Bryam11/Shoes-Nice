@@ -31,9 +31,9 @@ const routes: Routes = [
     path: 'register-shoes',
     component: RegisterShoesComponent
   },
-  //{
-    //path: '**', pathMatch: 'full', redirectTo: 'home'
- // }
+  {
+    path: '**', pathMatch: 'full', redirectTo: 'home'
+  }
  
  
 ];
