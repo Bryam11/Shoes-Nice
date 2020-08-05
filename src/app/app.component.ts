@@ -17,7 +17,7 @@ export class AppComponent {
     
     this.items = [
       {
-          label: '🙍🏻‍♂️USUARIOS',
+          label: '📁MENU',
           items: [
               [
                   {
@@ -27,25 +27,12 @@ export class AppComponent {
                     items: [{label: '👳🏾‍♂️Registrar usuario', routerLink: 'registrar-Usuario'}]
                   },
                   {
+                    items: [{label: '📰Ver catalogo', routerLink: 'ver-catalogo'}]
+                  },
+                  {
                     items: [{label: '🔙Salir', routerLink: 'Home'}]
                   }
               ],
-          ]
-      },
-      {
-          label: '📁CATALOGO',
-          items: [
-              [
-                  {
-                    items: [{label: '📰Ver Catalogo', routerLink: 'ver-catalogo'}]
-                  },
-                  {
-                    items: [{label: '👟Registrar Zapatos', routerLink: 'register-shoes'}]
-                  },
-                  {
-                    items: [{label: '🔙Salir', routerLink: 'Home'}]
-                  }
-              ]
           ]
       },
   ]

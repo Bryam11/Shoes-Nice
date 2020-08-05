@@ -32,6 +32,7 @@
 
             <!-- PONER TODOS LOS COMPONENTES AL LADO DERECHO -->
             <div id="right">
+                <button style="align-self: center;" pButton pRipple type="button" label="Registrar Zapatos" (click)="ventanaShoes()" class="ui-button-rounded ui-button-success"></button>
                 <h3 style="color: #ffffff;margin-right:300px;">🔎Buscar Marcas🔍 </h3>
                 <p-listbox [options]="zapatos" [(ngModel)]="selectedshoes" [listStyle]="{'max-height':'250px'}" style="margin-right: 10px;">
                     <ng-template let-shoes pTemplate="item">

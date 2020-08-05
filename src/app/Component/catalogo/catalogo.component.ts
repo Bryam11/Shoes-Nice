@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MegaMenuItem, SelectItem } from 'primeng/api';
 import { ShoesControllerService, Shoes } from 'src/app/Rest';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
@@ -21,7 +22,7 @@ export class CatalogoComponent implements OnInit {
   
 
   // CONSTRUCTOR
-  constructor(private shoesService: ShoesControllerService) {
+  constructor(private shoesService: ShoesControllerService, private router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -71,5 +72,11 @@ export class CatalogoComponent implements OnInit {
       this.zapa = data;
       console.log(this.shoes);
     });
+  }
+
+  //ETODO PARA LLAMAR REGISTRAR SHOES
+  ventanaShoes(){
+    alert('Primero debe iniciar sesión')
+    this.router.navigate(["Iniciar-sesion"])
   }
 }

@@ -10,7 +10,7 @@ import { RegisterShoesComponent } from './Component/register-shoes/register-shoe
 const routes: Routes = [
   {
 
-    path: 'Home',
+    path: '',
 
     component: HomeComponent
   },
@@ -30,12 +30,7 @@ const routes: Routes = [
   {
     path: 'register-shoes',
     component: RegisterShoesComponent
-  },
-  {
-    path: '**', pathMatch: 'full', redirectTo: 'Home'
-  }
- 
- 
+  }, 
 ];
 
 @NgModule({

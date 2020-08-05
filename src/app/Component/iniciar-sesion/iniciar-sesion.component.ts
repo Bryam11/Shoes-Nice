@@ -77,8 +77,8 @@ export class IniciarSesionComponent implements OnInit {
       if (error) {
         console.log(error);
         console.log(params);
-        alert('Revisebien su nombre de usuario o su foto ');
-
+    
+alert("Revise bien su nombre de usuario o su foto, si no esta registrado, registrese en el apartado de menú")
       } else {
         console.log(params);
 
@@ -88,12 +88,11 @@ export class IniciarSesionComponent implements OnInit {
           let position = data.Face.BoundingBox
           let similarity = data.Similarity
           let conficencial = data.Confidence
-          alert(`El paresido entre las dos fotos es de ${similarity}%`);
           if (similarity > 95) {
-            alert(`puede iniciar secion ${similarity}%`);
-            window.open('ver-catalogo', '_self', 'width=620,height=1000')
+            alert(`Puede iniciar sesión ${similarity}% parecido` );
+            window.open('register-shoes','_self', 'width=620,height=1000')
           } else {
-            alert(`No Puede iniciar sesion`);
+            alert(`No puede iniciar sesión, revise sus credenciales`);
           }
         });
       }
@@ -101,8 +100,4 @@ export class IniciarSesionComponent implements OnInit {
     });
 
   }
-
-
-
-
 }
