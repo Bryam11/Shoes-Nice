@@ -11,29 +11,22 @@ import { ShoesControllerService } from '../../Rest/api/shoesController.service';
 })
 export class RegisterShoesComponent implements OnInit {
 
-  cars: SelectItem[];
-  selectedCar2: string = 'BMW';
+  zapatos: SelectItem[];
   item: string;
-
-  
-
-  foto: any;
-  detector: any;
   image: any;
-  imagen1: any;
   params: any;
-  imagen2: any;
-  maxConfidence: any;
-  nombreEmocion: any;
-  cargando = null;
-  nombre: string;
+
+
+
+
+
   showImagen = false;
   error = false;
   subiendo = false;
- archivo: any;
+  archivo: any;
   urlImagen = null;
-  messageService: any;
 
+ //Inicializacion del objeto de la clase Shoes para el Post
   shoes: Shoes = {
     shoesColor: "",
     shoesMarca: "",
@@ -43,9 +36,9 @@ export class RegisterShoesComponent implements OnInit {
     url: ""
   };
 
+  // Instacia del S3 Bucket 
   albumBucketName = 'imagenes-shoes';
-
-  s3 = new AWS.S3({
+   s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     params: { Bucket: 'imagenes-shoes' },
   });
@@ -56,7 +49,7 @@ export class RegisterShoesComponent implements OnInit {
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
     });
-    this.cars = [
+    this.zapatos = [
       { label: 'Nike', value: 'NIKE' },
       { label: 'Adidas', value: 'ADIDAS' },
       { label: 'Puma', value: 'PUMA' },
@@ -68,6 +61,8 @@ export class RegisterShoesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //Metodo para guardar la foto en el Bucket
   onClickSubir = async (event) => {
     event.preventDefault();
 
@@ -101,7 +96,7 @@ export class RegisterShoesComponent implements OnInit {
     }
 
   };
-
+//Metdo para cargar foto
   onChange = (event) => {
     if (event.target.files.length > 0) {
       this.archivo = event.target.files[0];
@@ -109,7 +104,7 @@ export class RegisterShoesComponent implements OnInit {
     }
   }
 
-  
+// metodo para guardar los datos en el back-end
   guardar() {
     this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
       console.log(this.shoes);

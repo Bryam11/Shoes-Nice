@@ -7,15 +7,20 @@
                 <h1 style="color: #ffffff;display: block; margin-left: 72px; margin-right: auto;">Ingrese con su Foto</h1>
                 <div id="miCameraOnline">
                     <video #video id="video" width="300" height="240" autoplay class="center"></video>
-                    <h2 style="text-align: center;"><span style="color: #ffffff;">Nombre de Usuario</span></h2>
+
+                    <h2 style="text-align: center;"><span style="color: #000000;"><strong><span style="background-color: #ffcc99;">NOMBRE DE USUARIO</span></strong>
+                        </span>
+                    </h2>
                     <input style="margin-left: 112px; margin-right: auto;" type="text" pInputText pTooltip="Ingrese your username" placeholder="User Name" tooltipEvent="focus" [(ngModel)]="usuarios.nombre">
 
 
-                    <h2 style="display: block; margin-left: 115px; margin-right: auto;"><span style="color: #ffffff;">Capturar rostro</span></h2>
+                    <h2 style="text-align: center;"><span style="color: #000000;"><strong><span style="background-color: #ffcc99;">CAPTURAR ROSTRO</span></strong>
+                        </span>
+                    </h2>
 
                     <button (click)="capturar()" style="display: block; margin-left: 175px; margin-right: auto;" pButton type="button" label="📸" class="ui-button-rounded ui-button-warning"></button>
-                    <br>    
-                    <button (click)="onClickSubir($event); visibleSidebar3= true; blockedPanel=true" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
+                    <br>
+                    <button (click)="onClickSubir($event); visibleSidebar3= true" style="display: block; margin-left: 155px; margin-right: auto;" pButton type="button" label="Registrar" class="ui-button-rounded ui-button-secundary"></button>
                     <br>
                 </div>
             </div>
@@ -24,17 +29,17 @@
                 <div>
                     <br>
                     <br>
-                    <blockquote>   
-                        <h1 style="color: #ffffff;text-align: center;">Aqui visualizara su foto xd uWu<img src="https://html-online.com/editor/tinymce4_6_5/plugins/emoticons/img/smiley-cool.gif" alt="cool" /></h1>
+                    <blockquote>
+                        <h1 style="color: #ffffff;text-align: center;">Aqui visualizara su foto</h1>
                     </blockquote>
-               
+
                     <canvas #canvas id="canvas" width="640" height="480" class="center"></canvas>
                 </div>
 
             </div>
 
-     
-           
+
+
 
 
 
@@ -46,17 +51,7 @@
     <br>
     <br>
 
-    <p-blockUI [target]="pnl" [blocked]="blockedPanel">
-        <i class="pi pi-lock" style="position:absolute;top:35%;left:50%;font-size: 60px;font-weight: bold;"></i>
-    </p-blockUI>
-    <p-panel #pnl >
-        <p-sidebar [(visible)]="visibleSidebar3" position="top" [baseZIndex]="10000">
-            <h1 style="text-align: center;"><span style="color: #008000;"><strong>PUEDE INGRESAR ESTE USUARIO</strong></span></h1>
-            <p-splitButton (click)="onClickSubir1($event)" label="Guardar Usuario" icon="pi pi-plus">       
-            </p-splitButton>
-         
-        </p-sidebar>
-    </p-panel>
+
 
 
     <p-sidebar [(visible)]="visibleSidebar3" position="top" [baseZIndex]="10000">

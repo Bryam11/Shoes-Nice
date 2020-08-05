@@ -1,8 +1,13 @@
 <!-- LLAMAR A MEGAMENU CON SUS ITEMS -->
-<p-megaMenu [model]="items">
-</p-megaMenu>
 
-<!-- LLAMAR LAS DIRECCIONES -->
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="visorbanner">
+    <div id="content">
+        <p-megaMenu [model]="items">
+        </p-megaMenu>
+
+        <!-- LLAMAR LAS DIRECCIONES -->
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>

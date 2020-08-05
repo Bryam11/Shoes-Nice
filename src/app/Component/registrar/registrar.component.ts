@@ -21,22 +21,14 @@ export class RegistrarComponent implements OnInit {
   foto: any;
   detector: any;
   image: any;
-  maxConfidence: any;
-  nombreEmocion: any;
-  cargando = null;
-  bucket = 'bucket' // the bucketname without s3://
-  foto_origen = 'source.jpg'
-  client: any;
-  response: any
-  nombre: string;
+  
   showImagen = false;
   error = false;
   subiendo = false;
   urlImagen = null;
   imageRegistro: any;
 
-  visibleSidebar3 = false;
-  blockedPanel: boolean = false;
+  visibleSidebar3= false;
 
 
 
@@ -47,7 +39,7 @@ export class RegistrarComponent implements OnInit {
     params: { Bucket: 'imagenes-usuarios' },
   });
   public usuarios: Usuario = { foto: "", nombre: "", userid: 0 };
-  usuarioslist = new Array<Usuario>();
+
 
 
 
@@ -76,8 +68,6 @@ export class RegistrarComponent implements OnInit {
   }
 
   public capturar() {
-    
-    this.nombreEmocion = null;
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 600, 440);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
     this.foto = this.foto.split(",")[1];
@@ -87,14 +77,15 @@ export class RegistrarComponent implements OnInit {
       },
 
     }
+
   }
 
 
 
+  //metodo de validacion para que no se puedan repetir los usuarios
 
   onClickSubir = async (event) => {
-    this.cargando = true;
-
+    
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.usuarios.nombre) {
       var params = {
@@ -119,13 +110,7 @@ export class RegistrarComponent implements OnInit {
         if (error) {
           console.log(error);
           console.log(params);
-
-          alert('Ingrese bien los datos');
-
-          const btnEnviar = document.getElementById('ventana');
-          (document.getElementById('ventana') as any).disabled = true;
-          //btnEnviar.disabled=true;
-        } else {
+      } else {
           console.log(params);
 
           response.FaceMatches.forEach(data => {
@@ -171,11 +156,11 @@ export class RegistrarComponent implements OnInit {
         alert('SELECCIONE UN ARCHIVO');
       }
     }
-    
-    this.blockedPanel=false;
+
+
   }
 
-
+  //metodo para registrar en el back-end
   guardar() {
 
     this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data => {
@@ -191,7 +176,7 @@ export class RegistrarComponent implements OnInit {
   }
 
 
-
+// metodo para guardar foto
   onClickSubir1 = async (event) => {
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.foto) {
