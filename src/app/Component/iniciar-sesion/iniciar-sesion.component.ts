@@ -90,7 +90,7 @@ alert("Revise bien su nombre de usuario o su foto, si no esta registrado, regist
           let conficencial = data.Confidence
           if (similarity > 95) {
             alert(`Puede iniciar sesión ${similarity}% parecido` );
-            window.open('register-shoes','_self', 'width=620,height=1000')
+            window.open('/#/register-shoes','_self', 'width=620,height=1000')
           } else {
             alert(`No puede iniciar sesión, revise sus credenciales`);
           }

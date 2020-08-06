@@ -106,10 +106,15 @@ export class RegisterShoesComponent implements OnInit {
 
 // metodo para guardar los datos en el back-end
   guardar() {
-    this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
-      console.log(this.shoes);
-      window.alert('Se ha registrado sus zapatos correctamente');
-    });
+    if(this.shoes.shoesColor == '' || this.shoes.shoesMarca == '' || this.shoes.shoesModelo == '' || this.shoes.talla == ''){
+alert('Llene todos los campos.')
+    }else{
+      this.servicioshoes.createShoesUsingPOST(this.shoes).subscribe(data => {
+        console.log(this.shoes);
+        window.alert('Se ha registrado sus zapatos correctamente');
+      });
+    }
+    
   }
 
 }

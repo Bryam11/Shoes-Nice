@@ -27,10 +27,9 @@ export class RegistrarComponent implements OnInit {
   subiendo = false;
   urlImagen = null;
   imageRegistro: any;
-
   visibleSidebar3= false;
-
-
+  x: any;
+ 
 
   albumBucketName = 'imagenes-usuarios';
 
@@ -81,11 +80,11 @@ export class RegistrarComponent implements OnInit {
   }
 
 
-
   //metodo de validacion para que no se puedan repetir los usuarios
 
-  onClickSubir = async (event) => {
-    
+  //onClickSubir = async (event) => {
+  verificarFoto(): void{
+    var vari: any;
     this.imageRegistro = new Buffer(this.foto, 'base64');
     if (this.usuarios.nombre) {
       var params = {
@@ -109,70 +108,90 @@ export class RegistrarComponent implements OnInit {
 
         if (error) {
           console.log(error);
-          console.log(params);
+          console.log(params); 
+           
+        // console.log(this.vari, '<-----mensaje')
+          
       } else {
           console.log(params);
 
           response.FaceMatches.forEach(data => {
             console.log(data);
-
+            this.vari=data.Similarity;
             let position = data.Face.BoundingBox
             let similarity = data.Similarity
             let conficencial = data.Confidence
-            if (similarity > 95) {
-              alert(`Este usuario ya se encuentra registrado`);
-              location.reload();
-            }
+            localStorage.setItem("similitud",similarity);
           });
-
-
         }
 
       });
-    } else {
-      if (this.foto) {
-        try {
-          this.subiendo = true;
-
-          const data = await new AWS.S3.ManagedUpload({
-            params: {
-              Bucket: this.albumBucketName,
-              Key: this.usuarios.nombre + '.png',
-              Body: this.imageRegistro,
-              ACL: 'public-read',
-            },
-          }).promise();
-          this.usuarios.foto = data.Location;
-          this.subiendo = false;
-          this.showImagen = true;
-        } catch (error) {
-          this.error = true;
-          const bucle = setInterval(() => {
-            this.error = false;
-            clearInterval(bucle);
-          }, 2000);
-        }
-      } else {
-        alert('SELECCIONE UN ARCHIVO');
-      }
     }
+    
+    this.x = localStorage.getItem('similitud');
 
-
+    if(this.x>95){
+      alert('Este rostro ya se encuentra registrado por la integridad de los datos la pagina sera reiniciada');
+      // location.reload();
+    }
   }
 
-  //metodo para registrar en el back-end
-  guardar() {
+  public verifica(){
+    if(this.x>95){
+       return false;
+    }else{
+     return true;
+    }
+  }
 
-    this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data => {
+
+  //metodo para registrar en el back-end
+  registrarUsuario  = async (event) =>{
+   // this.verificarFoto();
+  if(this.verifica() ==true){
+ //METODO GUARDAR LA FOTO EN EL BUCKET
+ this.imageRegistro = new Buffer(this.foto, 'base64');
+ if (this.foto) {
+   try {
+     this.subiendo = true;
+
+     const data = await new AWS.S3.ManagedUpload({
+       params: {
+         Bucket: this.albumBucketName,
+         Key: this.usuarios.nombre + '.png',
+         Body: this.imageRegistro,
+         ACL: 'public-read',
+       },
+     }).promise();
+     this.usuarios.foto = data.Location;
+     this.subiendo = false;
+     this.showImagen = true;
+   } catch (error) {
+     this.error = true;
+     const bucle = setInterval(() => {
+       this.error = false;
+       clearInterval(bucle);
+     }, 2000);
+   }
+ } else {
+   alert('SELECCIONE UN ARCHIVO');
+ }
+
+//codigo para postear en el back-end
+ this.serviceUsuarui.createUserUsingPOST(this.usuarios).subscribe(data => {
       console.log(data);
+      
       alert('Se a registrado correctamente');
-      location.reload();
     }, (err) => {
       console.log(err);
       console.log("los datos estan duplicados");
       alert(`este nombre de ususario ya existe pruebe con ${this.usuarios.nombre}11`);
 
     });
+  }else{
+  //  location.reload();
+}
+    
   }
 
 
@@ -192,7 +211,8 @@ export class RegistrarComponent implements OnInit {
           },
         }).promise();
         this.usuarios.foto = data.Location;
-        this.guardar();
+        localStorage.setItem('imagenUsuario', this.usuarios.foto)
+       // this.guardar();
         this.subiendo = false;
         this.showImagen = true;
       } catch (error) {
