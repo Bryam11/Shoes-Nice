@@ -5,9 +5,6 @@ import { UsuarioControllerService } from '../../Rest/api/usuarioController.servi
 import { Usuario } from 'src/app/Rest';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
@@ -15,9 +12,11 @@ import { Router } from '@angular/router';
 
 })
 export class RegistrarComponent implements OnInit {
+  // DECLARACION DE VIEWCHILD
   @ViewChild("video") video: ElementRef;
   @ViewChild("canvas") canvas: ElementRef;
 
+  // VARIABLES DECLARADAS
   foto: any;
   detector: any;
   image: any;
@@ -28,9 +27,9 @@ export class RegistrarComponent implements OnInit {
   urlImagen = null;
   imageRegistro: any;
   visibleSidebar3= false;
-  x: any;
- 
 
+ 
+// VARIABLE CON EL NOMBRE DEL BUCKET
   albumBucketName = 'imagenes-usuarios';
 
   s3 = new AWS.S3({
@@ -41,22 +40,22 @@ export class RegistrarComponent implements OnInit {
 
 
 
-
+// CONSTRUCTOR
   constructor(private serviceUsuarui: UsuarioControllerService, private roueter: Router) {
     this.usuarios = {};
   }
 
-  ngOnInit(): void {
 
+  // METODO INICIAR
+  ngOnInit(): void {
     AWS.config.region = 'us-east-1'; // Región
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'us-east-1:6a1b91eb-c657-452f-8302-dffb3ed59e80',
     });
     this.usuarios = {};
-
   }
 
- 
+//  METODO PARA INICIAR LA CAMARA
   public ngAfterViewInit() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true }).then(screenStream => {
@@ -66,6 +65,8 @@ export class RegistrarComponent implements OnInit {
     }
   }
 
+
+  // METODO PARA CAPTURAR ROSTRO
   public capturar() {
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 600, 440);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
@@ -78,14 +79,7 @@ export class RegistrarComponent implements OnInit {
     }
 
   }
-
-
-  //metodo de validacion para que no se puedan repetir los usuarios
-
-
- 
-
-  //metodo para registrar en el back-end
+  //METODO PARA REGISTRAR EN EL BACK-END
   registrarUsuario  = async (event) =>{
 
  //METODO GUARDAR LA FOTO EN EL BUCKET
@@ -130,10 +124,6 @@ alert('Debe llenar el campo nombre de usuario')
     alert(`este nombre de ususario ya existe pruebe con ${this.usuarios.nombre}11`);
 
   });
-}
- 
-  
-    
+}  
   }
-
 }

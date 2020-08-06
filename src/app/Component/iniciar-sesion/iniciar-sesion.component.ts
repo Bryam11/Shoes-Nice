@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
-import { Router, RouterModule } from '@angular/router';
-import { inject } from '@angular/core/testing';
+import { Router} from '@angular/router';
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',

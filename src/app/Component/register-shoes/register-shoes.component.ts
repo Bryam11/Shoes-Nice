@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import * as AWS from 'aws-sdk';
 import { Shoes } from '../../Rest/model/shoes';
@@ -10,16 +10,11 @@ import { ShoesControllerService } from '../../Rest/api/shoesController.service';
   styleUrls: ['./register-shoes.component.css']
 })
 export class RegisterShoesComponent implements OnInit {
-
+// DECLARACION DE VARIABLES
   zapatos: SelectItem[];
   item: string;
   image: any;
   params: any;
-
-
-
-
-
   showImagen = false;
   error = false;
   subiendo = false;
