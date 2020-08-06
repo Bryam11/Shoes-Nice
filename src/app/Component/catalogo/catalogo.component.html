@@ -34,10 +34,10 @@
             <div id="right">
                 <button style="align-self: center;" pButton pRipple type="button" label="Registrar Zapatos" (click)="ventanaShoes()" class="ui-button-rounded ui-button-success"></button>
                 <h3 style="color: #ffffff;margin-right:300px;">🔎Buscar Marcas🔍 </h3>
-                <p-listbox [options]="zapatos" [(ngModel)]="selectedshoes" [listStyle]="{'max-height':'250px'}" style="margin-right: 10px;">
+                <p-listbox [options]="zapatos" [(ngModel)]="selectedshoes" [listStyle]="{'max-height':'250px'}">
                     <ng-template let-shoes pTemplate="item">
                         <div class="ui-helper-clearfix">
-                            <img src="../../../assets/Imagenes/{{shoes.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="48">
+                            <img src="../../../assets/Imagenes/{{shoes.label}}.png" style="display:inline-block;margin:5px" width="48">
                             <span style="float:right;margin:20px 10px 0 0">{{shoes.value}}</span>
                         </div>
                     </ng-template>
@@ -46,7 +46,7 @@
                 <br>
 
 
-                <p-button (click)="buscarPorMarca()" label="Buscar" style="margin-right: auto; margin-left: auto; display:inline-block;margin:5px 0 0 5px" styleClass="ui-button-primary"></p-button>
+                <p-button (click)="buscarPorMarca()" label="Buscar" styleClass="ui-button-primary"></p-button>
             </div>
         </div>
     </div>

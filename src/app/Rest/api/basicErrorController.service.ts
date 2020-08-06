@@ -25,7 +25,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BasicErrorControllerService {
 
-    protected basePath = '//3.90.63.62/';
+    protected basePath = '//54.91.142.141/';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
