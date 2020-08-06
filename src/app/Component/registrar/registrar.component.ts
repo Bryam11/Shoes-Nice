@@ -110,7 +110,7 @@ export class RegistrarComponent implements OnInit {
    alert('SELECCIONE UN ARCHIVO');
  }
 
-//codigo para postear en el back-end
+//codigo para postear en el back-end DEL USUARIO
 if(this.usuarios.nombre == null){
 alert('Debe llenar el campo nombre de usuario')
 }else{
