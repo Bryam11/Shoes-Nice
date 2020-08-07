@@ -21,13 +21,13 @@
 
                         <p-dropdown [options]="zapatos" [(ngModel)]="shoes.shoesMarca" filter="true">
                             <ng-template let-item pTemplate="selectedItem">
-                                <!--img src="assets/showcase/images/demo/car/{{item.label}}.png" style="width:16px;vertical-align:middle" /-->
+                              
                                 <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
                             </ng-template>
-                            <ng-template let-car pTemplate="item">
+                            <ng-template let-shoes pTemplate="item">
                                 <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-                                    <!--img src="assets/showcase/images/demo/car/{{car.label}}.png" style="width:24px;position:absolute;top:1px;left:5px" /-->
-                                    <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+                                
+                                    <div style="font-size:14px;float:right;margin-top:4px">{{shoes.label}}</div>
                                 </div>
                             </ng-template>
 
@@ -76,12 +76,6 @@
                     type="button" label="Comparar" label="Guardar" class="ui-button-rounded ui-button-secundary"
                     (click)="onClickSubir($event)"></button>
             </form>
-
-            <!-- <div class="" *ngIf="showImagen" style="width: 700px;">
-                <h1>Imagen subida</h1>
-                <a [href]="urlImagen" target="_blank">Abrir Imagen</a>
-                <img class="imgn-fluid" [src]="urlImagen" alt="" />
-            </div> -->
 
         </div>
     </div>
